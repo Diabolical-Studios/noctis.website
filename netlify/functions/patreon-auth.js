@@ -1,4 +1,7 @@
 const axios = require('axios');
+const express = require('express');
+const app = express();
+const port = 3000;
 
 exports.handler = async function (event, context) {
     const CLIENT_ID = '2ZQbOdViSPl7sGF3HTAY3g4f5WuuuErWN87Jre8evgDaKC6dSdCbBum835gS7H_-';
@@ -52,4 +55,33 @@ exports.handler = async function (event, context) {
             };
         }
     }
+}
+
+app.get('/check-subscriber-status', async (req, res) => {
+    const accessToken = req.query.accessToken;
+    const isSubscriber = await checkPatreonSubscriber(accessToken);
+    res.send({ isSubscriber });
+});
+
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}/`);
+});
+
+async function checkSubscriptionStatusAndUpdateButton(accessToken) {
+    const response = await fetch(`/check-subscriber-status?accessToken=${accessToken}`);
+    const data = await response.json();
+
+    if (data.isSubscriber) {
+        const btn = document.querySelector('.header__btn');
+        btn.onclick = startDownload;
+        btn.querySelector('.header__btn-text').textContent = 'Download';
+
+        // Remove Patreon SVG (if you want to)
+        const svg = btn.querySelector('svg');
+        if (svg) svg.remove();
+    }
+}
+
+function startDownload() {
+    // Your download logic here...
 }
