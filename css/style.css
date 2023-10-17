@@ -123,6 +123,7 @@ html {
 body {
   overflow-x: hidden;
   max-width: 100%;
+  width: 100vw;
   background: #1A1C25;
   font-family: 'Poppins';
 }
@@ -697,6 +698,8 @@ body::-webkit-scrollbar-thumb:hover {
   display: flex;
   flex: 0 0;
   padding: 5px;
+
+  width: -webkit-fill-available;
 }
 
 .whatis__col_sm {
@@ -725,7 +728,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .whatis__title {
   font-family: "NauSea", sans-serif;
-  
+
   font-weight: 200;
   letter-spacing: 4px;
   font-size: 50px;
@@ -813,10 +816,39 @@ body::-webkit-scrollbar-thumb:hover {
 .whatis-grid {
   margin-top: 20px;
   margin-left: 20px;
-  width: 729px;
-  height: 318px;
+  width: 100%;
+  height: 300px;
+  gap: 10px;
   position: relative;
   display: flex;
+}
+
+@media (max-width: 1200px) {
+  .whatis-grid {
+    display: flex;
+    flex-direction: column;
+
+  }
+}
+
+.grid-middle-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: inherit;
+  gap: 10px;
+}
+
+@media (max-width: 1200px) {
+  .grid-middle-container {
+    width: 100%;
+  }
+}
+
+.grid-middle {
+  display: flex;
+  height: inherit;
+  gap: 10px;
 }
 
 .grid-square-01 {
@@ -828,9 +860,57 @@ body::-webkit-scrollbar-thumb:hover {
   outline-color: #8383e2;
 }
 
+.grid-square-01 h4 {
+  display: flex;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  color: #FFF;
+  font-family: 'NauSea';
+  letter-spacing: 2px;
+  font-weight: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-square-01 h3 {
+  display: flex;
+  color: #FFF;
+  font-size: 200%;
+  font-family: 'NauSea';
+  letter-spacing: 2px;
+  font-weight: 100;
+  justify-content: center;
+}
+
+@media (max-width: 1200px) {
+  .grid-square-01 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .grid-square-02, .grid-square-05 {
+    padding: 0px !important;
+  }
+
+  .grid-square-01 h3,h4 {
+    padding: 20px !important;
+  }
+
+  .grid-square-06 {
+    display: none;
+  }
+
+  .grid-square-07 {
+    display: none;
+  }
+}
+
 .grid-square-02 {
   width: -webkit-fill-available;
-  height: 100%;
+  height: -webkit-fill-available;
   background-color: #3c3c62;
   border-radius: 24px;
   outline-style: solid;
@@ -839,14 +919,14 @@ body::-webkit-scrollbar-thumb:hover {
 
   display: flex;
   justify-content: space-between;
-  padding: 40px;
+  padding: 0 40px;
   align-items: center;
 
 }
 
 .grid-square-03 {
   width: 40%;
-  height: 100%;
+  height: -webkit-fill-available;
   background-color: #3c3c62;
   border-radius: 24px;
   outline-style: solid;
@@ -856,7 +936,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .grid-square-04 {
   width: 50%;
-  height: 100%;
+  height: -webkit-fill-available;
   background-color: #3c3c62;
   border-radius: 24px;
   outline-style: solid;
@@ -866,7 +946,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .grid-square-05 {
   width: -webkit-fill-available;
-  height: 100%;
+  height: -webkit-fill-available;
   background-color: #3c3c62;
   border-radius: 24px;
   outline-style: solid;
@@ -875,13 +955,13 @@ body::-webkit-scrollbar-thumb:hover {
 
   display: flex;
   justify-content: space-between;
-  padding: 40px;
+  padding: 0 40px;
   align-items: center;
 }
 
 .grid-square-06 {
   width: 100%;
-  height: 40%;
+  height: -webkit-fill-available;
   background-color: #3c3c62;
   border-radius: 24px;
   outline-style: solid;
@@ -891,33 +971,12 @@ body::-webkit-scrollbar-thumb:hover {
 
 .grid-square-07 {
   width: 100%;
-  height: 60%;
+  height: -webkit-fill-available;
   background-color: #3c3c62;
   border-radius: 24px;
   outline-style: solid;
   outline-width: 1px;
   outline-color: #8383e2;
-}
-
-@media (max-width: 1260px) {
-  .whatis-grid {
-    width: 57.857vw;
-    height: 25.238vw;
-  }
-}
-
-@media (max-width: 768px) {
-  .whatis-grid {
-    margin: 25px 0 0;
-    width: 100%;
-    height: 38.062vw;
-  }
-}
-
-@media (max-width: 524px) {
-  .whatis-grid {
-    height: 130.34vw;
-  }
 }
 
 .whatis-grid__item01 {
@@ -4160,6 +4219,6 @@ body.quizOpen .quiz {
   }
 }
 
-svg {
+.frame-by-frame svg {
   display: none;
 }
