@@ -34,29 +34,44 @@
         </div>
     </div> -->
 
-    <header class="header">
-        <div class="header__container">
-            <div class="header__logo" data-clone="logo">
-                <img src="https://NIFTYNAFTY.COM/assets/images/logo.png" alt="logo">
-            </div>
-            <nav class="header__nav" data-clone="nav">
-                <a href="/" class="header__link">Home</a>`
-                <a href="https://twitter.com/nifty_nafty" class="header__link">Twitter</a>
-                <a href="https://discord.gg/NOCTIS" class="header__link">Discord</a>
-                <a href="/#roadmap" class="header__link">Roadmap</a>
-            </nav>
-            <a href="#" class="header__btn" onclick="startPatreonAuth()" data-clone="mint-btn">
-                <span class="header__btn-wrapper">
-                    <span class="header__btn-text">Login</span>
-                    <img src="https://NIFTYNAFTY.COM/assets/images/glass.png" alt="glass" class="header__btn-glass">
-                </span>
-            </a>
-            <button class="burgermenu" id="burgermenu"></button>
-        </div>
-    </header>
+    
     <!-- Header End-->
 
     <section class="intro">
+        
+        <header class="header">
+            <div class="header__container">
+                <div class="header__logo" data-clone="logo">
+                    <img src="https://NIFTYNAFTY.COM/assets/images/logo.png" alt="logo">
+                </div>
+                <nav class="header__nav" data-clone="nav">
+                    <a href="/" class="header__link">Home</a>`
+                    <a href="https://twitter.com/nifty_nafty" class="header__link">Twitter</a>
+                    <a href="https://discord.gg/NOCTIS" class="header__link">Discord</a>
+                    <a href="/#roadmap" class="header__link">Roadmap</a>
+                </nav>
+                <a href="#" class="header__btn" onclick="startPatreonAuth()" data-clone="mint-btn">
+                    <span class="header__btn-wrapper">
+    
+                        <!-- Patreon Logo SVG -->
+                        <span class="header__btn-text">Login with</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                            height="20px" viewBox="0 -4.5 256 256" version="1.1" preserveAspectRatio="xMidYMid"
+                            style="margin-left: 8px; vertical-align: middle;">
+                            <g>
+                                <path
+                                    d="M45.1355837,0 L45.1355837,246.35001 L0,246.35001 L0,0 L45.1355837,0 Z M163.657111,0 C214.65668,0 256,41.3433196 256,92.3428889 C256,143.342458 214.65668,184.685778 163.657111,184.685778 C112.657542,184.685778 71.3142222,143.342458 71.3142222,92.3428889 C71.3142222,41.3433196 112.657542,0 163.657111,0 Z"
+                                    fill="#FFF"></path>
+                            </g>
+                        </svg>
+                        <img src="https://NIFTYNAFTY.COM/assets/images/glass.png" alt="glass" class="header__btn-glass">
+                    </span>
+                </a>
+    
+                <button class="burgermenu" id="burgermenu"></button>
+            </div>
+        </header>
+
         <div class="intro__background">
             <picture>
                 <!-- <source srcset="assets/images/intro/background@mobile.png" media="(max-width: 768px)" type="image/png"> -->
@@ -73,7 +88,7 @@
                     <h1 class="hero__title">NOCTIS</h1>
                 </div>
                 <h4 class="hero__subtitle">
-                    V 0.2
+                    V 0.3
                 </h4>
             </div>
             <div class="hero__ai">
@@ -196,8 +211,6 @@
                                 <p class="icon-circle-before">Liquidity Pools instead of the NFTX and NFT20</p>
                                 <p class="icon-circle-before">NOCTIS Wear - exceptionally high-quality street wear,
                                     produced by and made for FREE DROPS exclusively for OGs</p>
-
-
                                 <p class="icon-circle-before">Development of the exclusive merchandise for our HODLers,
                                     and unique and high quality wear.</p>
                             </div>
@@ -877,103 +890,6 @@
         </footer>
     </div>
     <!-- Menu End -->
-
-    <div class="quiz" id="quiz">
-        <button class="quiz__close" data-quiz-close></button>
-        <div class="quiz__timer quizTimer" id="quizTimer">
-            <h2 class="quizTimer__title">Pre-sale is SOLD OUT</h2>
-            <p>YOU CAN TAKE A CHANCE TO WIN WL</p>
-            <!-- <h2 class="quizTimer__title">Before the presale left</h2>
-            <div class="quizTimer__timer">                    
-                <div class="quizTimer__group">
-                    <div class="quizTimer__numbers" data-clock="hours">                        
-                        <span class="quizTimer__item">0</span>
-                        <span class="quizTimer__item">0</span>
-                    </div>
-                    <p class="quizTimer__text">Hours</p>
-                </div>
-                <span class="quizTimer__colon">:</span>
-                <div class="quizTimer__group">
-                    <div class="quizTimer__numbers" data-clock="minutes">                        
-                        <span class="quizTimer__item">0</span>
-                        <span class="quizTimer__item">0</span>
-                    </div>
-                    <p class="quizTimer__text">Mins</p>
-                </div>
-                <span class="quizTimer__colon">:</span>
-                <div class="quizTimer__group">
-                    <div class="quizTimer__numbers" data-clock="seconds">                        
-                        <span class="quizTimer__item">0</span>
-                        <span class="quizTimer__item">0</span>
-                    </div>
-                    <p class="quizTimer__text">Seconds</p>
-                </div>
-            </div> -->
-        </div>
-        <div class="quiz__box quizBox" data-quiz-stage="1">
-            <header class="quizBox__header">
-                <span class="title">Win 1 of 25 WL Today</span>
-                <img src="https://NIFTYNAFTY.COM/assets/images/glass.png" alt="" class="img">
-            </header>
-            <div class="quizBox__body">
-                <h2 class="quizBox__title">Complete the following steps 👇</h2>
-                <div class="quizBox-item">
-                    <p class="quizBox-item__title">1. Follow <a href="#discord">@nifty_nafty</a> on Twitter</p>
-                    <input type="text" class="quizBox-item__input input-twitter" value=""
-                        placeholder="your Twitter handle" name="twitter">
-                </div>
-                <div class="quizBox-item">
-                    <p class="quizBox-item__title">2. Join NOCTIS Discord (<a href="#join">Join</a>)</p>
-                    <input type="text" class="quizBox-item__input input-discord" value=""
-                        placeholder="your Discord Username & ID" name="discord">
-                </div>
-                <button class="btn quizBox-item__btn">
-                    <span class="btn__text">Done, what’s next?</span>
-                    <img src="https://NIFTYNAFTY.COM/assets/images/glass.png" alt="glass" class="btn__glass">
-                </button>
-            </div>
-        </div>
-        <div class="quiz__box quizBox" data-quiz-stage="2">
-            <header class="quizBox__header">
-                <span class="title">Win 1 of 25 WL Today</span>
-                <img src="https://NIFTYNAFTY.COM/assets/images/glass.png" alt="" class="img">
-            </header>
-            <div class="quizBox__body">
-                <h2 class="quizBox__title sml">If you win the WL, we will add your wallet address to our WL
-                    smartcontract.</h2>
-                <div class="quizBox-item">
-                    <p class="quizBox-item__title">3. Your ETH wallet address: </p>
-                    <input type="text" class="quizBox-item__input input-eth" value=""
-                        placeholder="0x069dcf...1Fd023dcd00C" name="eth">
-                </div>
-                <div class="quizBox-item or">
-                    <p class="quizBox-item__title">4. How would you like to be notified?</p>
-                    <div class="quizBox-item__group">
-                        <input type="text" class="quizBox-item__input input-tg" value="" placeholder="Telegram (opt)"
-                            name="telegram">
-                        <input type="text" class="quizBox-item__input input-email" value="" placeholder="Email (opt)"
-                            name="email">
-                    </div>
-                </div>
-                <button class="btn quizBox-item__btn green">
-                    <span class="btn__text">Complete</span>
-                    <img src="https://NIFTYNAFTY.COM/assets/images/glass.png" alt="glass" class="btn__glass">
-                </button>
-            </div>
-        </div>
-        <div class="quiz__box quizBox" data-quiz-stage="3">
-            <header class="quizBox__header green">
-                <span class="title">Win 1 of 25 WL Today</span>
-                <img src="https://NIFTYNAFTY.COM/assets/images/glass.png" alt="" class="img">
-            </header>
-            <div class="quizBox__body">
-                <h2 class="quizBox__title xl">SENT!</h2>
-                <p class="quizBox__text">We’ll get back to you soon</p>
-                <div data-insert="socials"></div>
-            </div>
-        </div>
-    </div>
-    <!-- Quiz End -->
 </body>
 
 </html>
