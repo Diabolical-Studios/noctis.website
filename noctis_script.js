@@ -144,11 +144,6 @@
             }
           } // Handlers
 
-          function startPatreonAuth() {
-            // Redirect to your Netlify function that starts the OAuth2 flow
-            window.location.href = "/.netlify/functions/patreon-auth";
-          }
-
           reqBtn.addEventListener("click", function () {
             document.body.classList.add("quizOpen");
             setStage(1);
