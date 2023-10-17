@@ -3,6 +3,7 @@ const axios = require('axios');
 exports.handler = async function (event, context) {
     const CLIENT_ID = '2ZQbOdViSPl7sGF3HTAY3g4f5WuuuErWN87Jre8evgDaKC6dSdCbBum835gS7H_-';
     const REDIRECT_URI = 'https://diabolical.services/.netlify/functions/patreon-auth';
+    const queryString = require('querystring');
 
     // If it's the start of the auth
     if (event.httpMethod === "GET" && !event.queryStringParameters.code) {
@@ -21,12 +22,16 @@ exports.handler = async function (event, context) {
         const code = event.queryStringParameters.code;
 
         try {
-            const response = await axios.post('https://www.patreon.com/api/oauth2/token', {
+            const response = await axios.post('https://www.patreon.com/api/oauth2/token', queryString.stringify({
                 code: code,
                 grant_type: 'authorization_code',
                 client_id: CLIENT_ID,
                 client_secret: CLIENT_SECRET,
                 redirect_uri: REDIRECT_URI
+            }), {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
             });
 
             const accessToken = response.data.access_token;
