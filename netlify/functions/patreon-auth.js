@@ -40,6 +40,7 @@ exports.handler = async function (event, context) {
                 }
             };
         } catch (error) {
+            console.error("Error:", error.response.data);
             return {
                 statusCode: 500,
                 body: 'Error authenticating with Patreon.'
