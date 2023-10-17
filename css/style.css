@@ -124,6 +124,7 @@ body {
   overflow-x: hidden;
   max-width: 100%;
   background: #1A1C25;
+  font-family: 'Poppins';
 }
 
 body.quizOpen {
@@ -238,18 +239,6 @@ body::-webkit-scrollbar-thumb:hover {
   flex-direction: column;
   position: relative;
   z-index: 2;
-}
-
-@media (max-width: 991px) {
-  .intro {
-    padding-top: 97px;
-  }
-}
-
-@media (max-width: 768px) {
-  .intro {
-    padding-top: 122px;
-  }
 }
 
 .intro__background {
@@ -465,18 +454,6 @@ body::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 85.42%);
 }
 
-@media (max-width: 768px) {
-  .header {
-    padding-bottom: 40px;
-  }
-}
-
-@media (max-width: 395px) {
-  .header {
-    padding-top: 25px;
-  }
-}
-
 .header__container {
   max-width: 1360px;
   width: 100%;
@@ -485,18 +462,6 @@ body::-webkit-scrollbar-thumb:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-@media (max-width: 768px) {
-  .header__container {
-    padding: 0 28px;
-  }
-}
-
-@media (max-width: 414px) {
-  .header__container {
-    padding: 0 15px;
-  }
 }
 
 .header__logo img {
@@ -673,7 +638,7 @@ body::-webkit-scrollbar-thumb:hover {
 .whatis {
   position: relative;
   z-index: 4;
-  padding: 65px 0 170px;
+  padding: 65px 0px;
   background: #1A1C25;
 }
 
@@ -699,7 +664,6 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .whatis__row_first .whatis__col {
-  padding-bottom: 25px;
   justify-content: center;
   align-items: center;
 }
@@ -761,9 +725,10 @@ body::-webkit-scrollbar-thumb:hover {
 
 .whatis__title {
   font-family: "NauSea", sans-serif;
+  
   font-weight: 200;
   letter-spacing: 4px;
-  font-size: 39.9084px;
+  font-size: 50px;
   line-height: 1.25;
   color: #FFFFFF;
   -webkit-text-stroke: 1.39303px #FFFFFF;
@@ -846,8 +811,8 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .whatis-grid {
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
   width: 729px;
   height: 318px;
   position: relative;
@@ -856,50 +821,82 @@ body::-webkit-scrollbar-thumb:hover {
 
 .grid-square-01 {
   width: 20%;
-  background-color: #4b66e9;
+  background-color: #3c3c62;
   border-radius: 24px;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: #8383e2;
 }
 
 .grid-square-02 {
   width: -webkit-fill-available;
   height: 100%;
-  background-color: #4b66e9;
+  background-color: #3c3c62;
   border-radius: 24px;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: #8383e2;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  align-items: center;
+
 }
 
 .grid-square-03 {
   width: 40%;
   height: 100%;
-  background-color: #4b66e9;
+  background-color: #3c3c62;
   border-radius: 24px;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: #8383e2;
 }
 
 .grid-square-04 {
   width: 50%;
   height: 100%;
-  background-color: #4b66e9;
+  background-color: #3c3c62;
   border-radius: 24px;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: #8383e2;
 }
 
 .grid-square-05 {
   width: -webkit-fill-available;
   height: 100%;
-  background-color: #4b66e9;
+  background-color: #3c3c62;
   border-radius: 24px;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: #8383e2;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  align-items: center;
 }
 
 .grid-square-06 {
   width: 100%;
   height: 40%;
-  background-color: #4b66e9;
+  background-color: #3c3c62;
   border-radius: 24px;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: #8383e2;
 }
 
 .grid-square-07 {
   width: 100%;
   height: 60%;
-  background-color: #4b66e9;
+  background-color: #3c3c62;
   border-radius: 24px;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: #8383e2;
 }
 
 @media (max-width: 1260px) {
