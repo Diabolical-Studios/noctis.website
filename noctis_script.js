@@ -65,12 +65,6 @@
           launchClock();
         }
 
-        function startPatreonAuth() {
-          // Redirect to your Netlify function that starts the OAuth2 flow
-          window.location.href = "/.netlify/functions/patreon-auth";
-        }
-
-
         function initFormsQuiz() {
           var onSubmit = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () { };
           // Base settings
@@ -150,6 +144,10 @@
             }
           } // Handlers
 
+          function startPatreonAuth() {
+            // Redirect to your Netlify function that starts the OAuth2 flow
+            window.location.href = "/.netlify/functions/patreon-auth";
+          }
 
           reqBtn.addEventListener("click", function () {
             document.body.classList.add("quizOpen");
