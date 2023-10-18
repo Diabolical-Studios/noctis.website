@@ -24,11 +24,12 @@ async function checkSubscriptionStatusAndUpdateButton(isPatron) {
     const btnText = btnWrapper.querySelector('.header__btn-text');
     const svg = btnWrapper.querySelector('svg');
 
-    if (!isPatron) {
+    if (isPatron) {
         btn.onclick = startDownload;
         btnText.textContent = 'Download';
         if (svg) svg.remove();
     }
+    else return null;
     // If the user is a subscriber, the button remains unchanged
 }
 
