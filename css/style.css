@@ -577,6 +577,9 @@ body::-webkit-scrollbar-thumb:hover {
   justify-content: center;
   transform: translate(-3.75px, -6px);
   transition: transform 0.3s ease 0.1s;
+
+  width: -webkit-fill-available;
+  padding: 0 20px;
 }
 
 @media (max-width: 991px) {
