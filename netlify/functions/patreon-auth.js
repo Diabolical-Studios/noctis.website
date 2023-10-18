@@ -1,12 +1,9 @@
 const axios = require('axios');
-const express = require('express');
-const app = express();
-const port = 3000;
+const queryString = require('querystring');
 
 exports.handler = async function (event, context) {
     const CLIENT_ID = '2ZQbOdViSPl7sGF3HTAY3g4f5WuuuErWN87Jre8evgDaKC6dSdCbBum835gS7H_-';
     const REDIRECT_URI = 'https://diabolical.services/.netlify/functions/patreon-auth';
-    const queryString = require('querystring');
 
     // If it's the start of the auth
     if (event.httpMethod === "GET" && !event.queryStringParameters.code) {
@@ -21,7 +18,7 @@ exports.handler = async function (event, context) {
 
     // If it's the callback
     if (event.httpMethod === "GET" && event.queryStringParameters.code) {
-        const CLIENT_SECRET = 'buryt7Ox5xCiyaGzxEXL_XKBovayQd-ZvdeRPFfRrQP68TEm4Jnpx47LkmdRsVR1';  // Remember to replace this
+        const CLIENT_SECRET = 'buryt7Ox5xCiyaGzxEXL_XKBovayQd-ZvdeRPFfRrQP68TEm4Jnpx47LkmdRsVR1'; 
         const code = event.queryStringParameters.code;
 
         try {
@@ -38,19 +35,16 @@ exports.handler = async function (event, context) {
             });
 
             const accessToken = response.data.access_token;
-            // In a real-world scenario, you'd store the token in a database and associate it with the user.
-
             const userResponse = await axios.get('https://www.patreon.com/api/oauth2/v2/identity?include=memberships.currently_entitled_tiers', {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
             });
+            
             const userData = userResponse.data;
             const isPatron = (userData && userData.included && userData.included.length > 0);
             const cookieValue = `isPatron=${isPatron}; path=/; Secure; HttpOnly;`;
 
-
-            // For now, we'll just redirect back to the main page
             return {
                 statusCode: 302,
                 headers: {
@@ -58,7 +52,6 @@ exports.handler = async function (event, context) {
                     'Set-Cookie': cookieValue
                 }
             };
-            
         } catch (error) {
             console.error("Error:", error.response ? error.response.data : error.message);
             return {

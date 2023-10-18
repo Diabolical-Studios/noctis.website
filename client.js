@@ -1,6 +1,8 @@
 // When the page loads
 document.addEventListener('DOMContentLoaded', () => {
     const isPatron = getIsPatronFromCookie();
+    console.log("Is Patron:", isPatron);
+    
     if (isPatron !== null) {
         checkSubscriptionStatusAndUpdateButton(isPatron === "true");
     }
@@ -13,7 +15,7 @@ function getIsPatronFromCookie() {
     } else {
         return null;
     }
-}
+};
 
 
 async function checkSubscriptionStatusAndUpdateButton(isPatron) {
