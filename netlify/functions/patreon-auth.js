@@ -71,8 +71,8 @@ async function checkSubscriptionStatusAndUpdateButton(accessToken) {
     const response = await fetch(`/check-subscriber-status?accessToken=${accessToken}`);
     const data = await response.json();
 
-    if (!data.isSubscriber) {
-        const btn = document.querySelector('.header__btn');
+    if (data.isSubscriber) {
+        const btn = document.querySelector('.header__btn-wrapper');
         btn.onclick = startDownload;
         btn.querySelector('.header__btn-text').textContent = 'Download';
 
