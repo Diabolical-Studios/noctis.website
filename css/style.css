@@ -1,3 +1,67 @@
+h1 {
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+h1:before,
+h1:after{
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+h1:before{
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+
+h1:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
+
+
+
+
+
+
+
 button {
   cursor: pointer;
   display: block;
@@ -106,6 +170,20 @@ img {
   font-weight: 400;
   font-style: normal;
   src: url(../assets/fonts/NauSea.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Inversionz";
+  font-weight: 400;
+  font-style: normal;
+  src: url(../assets/fonts/Inversionz.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "InversionzUnboxed";
+  font-weight: 400;
+  font-style: normal;
+  src: url(../assets/fonts/InversionzUnboxed.otf) format("opentype");
 }
 
 *,
@@ -341,11 +419,12 @@ body::-webkit-scrollbar-thumb:hover {
   white-space: nowrap;
   position: relative;
   z-index: 2;
-  font-family: "NauSea", sans-serif;
+  font-family: "NauSea";
   font-weight: 400;
   font-size: 180px;
   text-transform: uppercase;
   color: #fff;
+  line-height: 0.8;
 }
 
 @media (max-width: 991px) {
@@ -363,11 +442,9 @@ body::-webkit-scrollbar-thumb:hover {
 .hero__subtitle {
   position: relative;
   z-index: 3;
-  margin-top: 33px;
   max-width: 584px;
   text-align: center;
   color: #FFFFFF;
-  font-family: "Gilroy", sans-serif;
   font-size: 14.7615px;
   line-height: 1.5;
   text-transform: capitalize;
@@ -402,10 +479,11 @@ body::-webkit-scrollbar-thumb:hover {
   width: 100%;
   position: absolute;
   left: 50%;
-  bottom: 50px;
+  bottom: -70px;
   max-height: 693px;
   transform: translateX(-50%);
   z-index: 2;
+  filter: brightness(80%);
 }
 
 .hero__rabbits img {
@@ -414,7 +492,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 @media (max-width: 768px) {
   .hero__rabbits {
-    bottom: 10px;
+    bottom: -100px;
   }
 }
 
@@ -586,13 +664,6 @@ body::-webkit-scrollbar-thumb:hover {
   .header__btn-wrapper {
     width: 145px;
     height: 45px;
-  }
-}
-
-@media (max-width: 768px) {
-  .header__btn-wrapper {
-    width: 112px;
-    height: 38px;
   }
 }
 
@@ -3500,8 +3571,6 @@ body.show-menu .menu {
 }
 
 .header__btn.cloned .header__btn-wrapper {
-  width: 112px;
-  height: 37px;
   transform: translate(-2px, -4px);
   border: 1.575px solid #233356;
 }
