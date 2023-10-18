@@ -40,13 +40,25 @@ exports.handler = async function (event, context) {
             const accessToken = response.data.access_token;
             // In a real-world scenario, you'd store the token in a database and associate it with the user.
 
+            const userResponse = await axios.get('https://www.patreon.com/api/oauth2/v2/identity?include=memberships.currently_entitled_tiers', {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
+            const userData = userResponse.data;
+            const isPatron = (userData && userData.included && userData.included.length > 0);
+            const cookieValue = `isPatron=${isPatron}; path=/; Secure; HttpOnly;`;
+
+
             // For now, we'll just redirect back to the main page
             return {
                 statusCode: 302,
                 headers: {
-                    Location: 'https://diabolical.services'
+                    Location: 'https://diabolical.services',
+                    'Set-Cookie': cookieValue
                 }
             };
+            
         } catch (error) {
             console.error("Error:", error.response ? error.response.data : error.message);
             return {
