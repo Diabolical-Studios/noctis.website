@@ -29,10 +29,18 @@ async function checkSubscriptionStatusAndUpdateButton(isPatron) {
         btnText.textContent = 'Download';
         if (svg) svg.remove();
     }
-    else return null;
+    else {
+        btn.onclick = visitPatreon;
+        btnText.textContent = 'Become A Supporter';
+    }
     // If the user is a subscriber, the button remains unchanged
 }
 
+
+function visitPatreon() {
+    // Your download logic here...
+    window.open("https://www.patreon.com/noctisgame");
+}
 
 function startDownload() {
     // Your download logic here...
