@@ -43,7 +43,7 @@ exports.handler = async function (event, context) {
             
             const userData = userResponse.data;
             const isPatron = (userData && userData.included && userData.included.length > 0);
-            const cookieValue = `isPatron=${isPatron}; path=/; Secure; HttpOnly;`;
+            const cookieValue = `isPatron=${isPatron}; path=/; Secure;`;
 
             return {
                 statusCode: 302,
