@@ -1,3 +1,9 @@
+:root {
+  --dark-blue: #060076;
+  --light-blue: #0d2caf;
+}
+
+
 h1 {
   animation: glitch 1s linear infinite;
 }
@@ -166,6 +172,13 @@ img {
 }
 
 @font-face {
+  font-family: "Sakurata";
+  font-weight: 400;
+  font-style: normal;
+  src: url(../assets/fonts/SAKURATA.ttf) format("truetype");
+}
+
+@font-face {
   font-family: "NauSea";
   font-weight: 400;
   font-style: normal;
@@ -273,8 +286,8 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .btn {
-  background: #8981EA;
-  border: 3px solid #233356;
+  background: var(--light-blue);
+  border: 3px solid var(--dark-blue);
   border-radius: 17px;
   position: relative;
   transition: box-shadow 0.45s ease, transform 0.45s ease;
@@ -321,17 +334,20 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .intro__background {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .intro__background .intro-back {
   width: 100%;
-  height: 90%;
+  height: 100%;
   transition: transform 0.03s ease;
   position: relative;
   z-index: 1;
@@ -351,6 +367,10 @@ body::-webkit-scrollbar-thumb:hover {
   width: 100%;
   height: 100%;
   z-index: 2;
+}
+
+.intro-star  {
+  mix-blend-mode: hard-light;
 }
 
 .hero {
@@ -382,24 +402,29 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .hero__content {
-  margin-top: 250px;
-  position: relative;
+  position: absolute;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-@media (max-width: 991px) {
-  .hero__content {
-    margin-top: 190px;
-  }
+.intro_coordinates {
+  position: absolute; /* This allows the h3 to be positioned in relation to the parent div */
+  bottom: 0; /* Positions the h3 at the bottom of the div */
+  left: 0; /* Positions the h3 at the left of the div */
+  transform-origin: bottom left; /* This is the pivot point for the rotation */
+  transform: rotate(-90deg) translateY(100%);
+  margin: 0; /* Removes any default margin */
+  z-index: 2;
+  color: #fff;
+  white-space: nowrap; 
+  font-size: clamp(0.2rem, 2vw, 0.8rem);
 }
 
-@media (max-width: 768px) {
-  .hero__content {
-    margin-top: 120px;
-  }
+.intro_coordinates h3 {
+  padding: 40px;
+  font-family: 'Sakurata';
 }
 
 .hero__letters {
@@ -421,22 +446,10 @@ body::-webkit-scrollbar-thumb:hover {
   z-index: 2;
   font-family: "NauSea";
   font-weight: 400;
-  font-size: 180px;
+  font-size: clamp(4rem, 6vw, 16rem);
   text-transform: uppercase;
   color: #fff;
   line-height: 0.8;
-}
-
-@media (max-width: 991px) {
-  .hero__title {
-    font-size: 80px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero__title {
-    font-size: 60px;
-  }
 }
 
 .hero__subtitle {
@@ -525,7 +538,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .header {
-  position: relative;
+  position: absolute;
   left: 0;
   top: 0;
   width: 100%;
@@ -604,7 +617,7 @@ body::-webkit-scrollbar-thumb:hover {
   display: block;
   width: 100%;
   height: 100%;
-  background: #233356;
+  background: var(--dark-blue);
   border-radius: inherit;
   position: absolute;
   z-index: -1;
@@ -646,10 +659,10 @@ body::-webkit-scrollbar-thumb:hover {
   display: block;
   width: 160px;
   height: 54px;
-  background: #8981EA;
+  background: var(--light-blue);
   border-radius: inherit;
   position: relative;
-  border: 3px solid #233356;
+  border: 3px solid var(--dark-blue);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -658,13 +671,6 @@ body::-webkit-scrollbar-thumb:hover {
 
   width: -webkit-fill-available;
   padding: 0 20px;
-}
-
-@media (max-width: 991px) {
-  .header__btn-wrapper {
-    width: 145px;
-    height: 45px;
-  }
 }
 
 .header__btn-text {
@@ -714,8 +720,7 @@ body::-webkit-scrollbar-thumb:hover {
   position: relative;
   z-index: 4;
   padding: 65px 0px;
-  background: #1A1C25;
-}
+  background: linear-gradient(to bottom, #000000, #00136b);}
 
 @media (max-width: 1260px) {
   .whatis {
@@ -859,12 +864,12 @@ body::-webkit-scrollbar-thumb:hover {
   margin-top: 25px;
   width: 306px;
   height: 72px;
-  box-shadow: 5px 8px 0px #233356;
+  box-shadow: 5px 8px 0px var(--dark-blue);
 }
 
 .whatis__btn:hover {
   transform: translate(5px, 8px);
-  box-shadow: 0px 0px 0px #233356;
+  box-shadow: 0px 0px 0px var(--dark-blue);
 }
 
 @media (max-width: 1260px) {
@@ -873,7 +878,7 @@ body::-webkit-scrollbar-thumb:hover {
     width: 24.28vw;
     height: 5.714vw;
     border-radius: 1.349vw;
-    box-shadow: 0.39vw 0.63vw 0px #233356;
+    box-shadow: 0.39vw 0.63vw 0px var(--dark-blue);
   }
 
   .whatis__btn>span {
@@ -972,10 +977,6 @@ body::-webkit-scrollbar-thumb:hover {
 
   .grid-square-02, .grid-square-05 {
     padding: 0px !important;
-  }
-
-  .grid-square-01 h3,h4 {
-    padding: 20px !important;
   }
 
   .grid-square-06 {
@@ -1534,14 +1535,14 @@ body::-webkit-scrollbar-thumb:hover {
   margin-top: 25px;
   width: 265px;
   height: 72px;
-  box-shadow: 5px 8px 0px #233356;
+  box-shadow: 5px 8px 0px var(--dark-blue);
   position: relative;
   z-index: 3;
 }
 
 .nf__btn:hover {
   transform: translate(5px, 8px);
-  box-shadow: 0px 0px 0px #233356;
+  box-shadow: 0px 0px 0px var(--dark-blue);
 }
 
 @media (max-width: 1095px) {
@@ -1549,7 +1550,7 @@ body::-webkit-scrollbar-thumb:hover {
     width: 235px;
     height: 56px;
     border-radius: 10px;
-    box-shadow: 3px 5px 0px #233356;
+    box-shadow: 3px 5px 0px var(--dark-blue);
   }
 
   .nf__btn>span {
@@ -2309,7 +2310,7 @@ section.progress video {
 
 .ownnf__btn:hover {
   transform: translate(3.75px, 6px);
-  box-shadow: 0px 0px 0px #233356;
+  box-shadow: 0px 0px 0px var(--dark-blue);
 }
 
 .ownnf__btn:hover img {
@@ -3572,7 +3573,7 @@ body.show-menu .menu {
 
 .header__btn.cloned .header__btn-wrapper {
   transform: translate(-2px, -4px);
-  border: 1.575px solid #233356;
+  border: 1.575px solid var(--dark-blue);
 }
 
 .header__btn.cloned .header__btn-wrapper .header__btn-text {
@@ -4116,8 +4117,8 @@ body.quizOpen .quiz {
   min-width: 284px;
   min-height: 54px;
   background: #8981EA;
-  border: 2.25px solid #233356;
-  box-shadow: 3.75px 6px 0px #233356;
+  border: 2.25px solid var(--dark-blue);
+  box-shadow: 3.75px 6px 0px var(--dark-blue);
   border-radius: 12.75px;
 }
 
