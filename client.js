@@ -24,7 +24,7 @@ async function checkSubscriptionStatusAndUpdateButton(isPatron) {
     const btnText = btnWrapper.querySelector('.header__btn-text');
     const svg = btnWrapper.querySelector('svg');
 
-    if (isPatron) {
+    if (!isPatron) {
         btn.onclick = startDownload;
         btnText.textContent = 'Download';
         if (svg) svg.remove();
