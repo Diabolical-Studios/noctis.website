@@ -22,6 +22,59 @@
         }
     </script>
 
+    <script>
+        // Function to get the number of days in a month
+        function daysInMonth(month, year) {
+            return new Date(year, month, 0).getDate();
+        }
+
+        // Get the current date
+        const currentDate = new Date();
+        const currentDay = currentDate.getDate();
+        const currentMonth = currentDate.getMonth(); // Months are 0-indexed (0 = January, 11 = December)
+        const currentYear = currentDate.getFullYear();
+
+        const progressBars = document.querySelectorAll('.gantt__row-bars li');
+
+        progressBars.forEach(bar => {
+            const gridColumn = window.getComputedStyle(bar, null).getPropertyValue("grid-column");
+            const [startMonth, endMonth] = gridColumn.split('/').map(value => parseInt(value.trim()) - 1); // Subtracting 1 to make it 0-indexed
+
+            // Calculate the total days between the start and end months
+            let totalDays = 0;
+            for (let i = startMonth; i <= endMonth; i++) {
+                totalDays += daysInMonth(i + 1, currentYear);
+            }
+
+            // Calculate the days passed since the start month
+            let daysPassed = 0;
+            for (let i = startMonth; i < currentMonth; i++) {
+                daysPassed += daysInMonth(i + 1, currentYear);
+            }
+            if (currentMonth >= startMonth && currentMonth <= endMonth) {
+                daysPassed += currentDay;
+            }
+
+            // Calculate the percentage of days passed within the total days
+            let percentage = (daysPassed / totalDays) * 100;
+
+            // Ensure the percentage does not exceed 100% or fall below 0%
+            if (currentMonth > endMonth) {
+                percentage = 100;
+            } else if (currentMonth < startMonth) {
+                percentage = 0;
+            }
+
+            // Apply the percentage to the progress bar inside the current li
+            const progressBar = bar.querySelector('.progress-bar');
+            progressBar.style.width = `${percentage}%`;
+
+            // Update the value inside the <p> tag inside the current li
+            const progressValue = bar.querySelector('.progress-value');
+            progressValue.textContent = `${percentage.toFixed(0)}%`;
+        });
+    </script>
+
     <script src="./client.js"></script>
 
 </head>
@@ -74,6 +127,16 @@
 
         <div class="intro__background">
 
+            <div style="
+            width: 100%;
+            position: absolute;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            z-index: 3;
+            mix-blend-mode: darken;
+            "></div>
+
+
             <img src="../assets/gifs/JellyMod.gif" alt="" class="intro-star">
 
             <picture style="width: 100%; height: 100%;">
@@ -88,7 +151,7 @@
                     <h1 class="hero__title" title="NOCTIS">NOCTIS</h1>
                 </div>
                 <h4 class="hero__subtitle">
-                    V 0.7
+                    V 0.8
                 </h4>
             </div>
 
@@ -121,7 +184,7 @@
     </section>
     <!-- Intro End -->
 
-    <section class="whatis">
+    <!--     <section class="whatis">
         <div class="container whatis__container">
             <div class="whatis__row whatis__row_first">
                 <div class="whatis__col whatis__col_sm">
@@ -139,8 +202,6 @@
                 <div class="whatis__col whatis__col_sm">
                     <a href="/#roadmap" class="btn whatis__btn">
                         <span class="btn__text">Check Our Roadmap</span>
-                        <img src="https://NIFTYNAFTY.COM/assets/images/glass.png" alt="glass" class="btn__glass">
-
                     </a>
                 </div>
                 <div class="whatis__col whatis__col_xl">
@@ -215,32 +276,222 @@
                             <div class="grid-square-07" class="grid-square">
                             </div>
                         </div>
-
-
-
-
-                        <!-- <img src="https://niftynafty.com/assets/images/whatis/img-01@x.png" class="whatis-grid__item01" alt="img">
-                        <img src="https://niftynafty.com/assets/images/whatis/img-02@2x.png" class="whatis-grid__item02" alt="img">
-                        <img src="https://niftynafty.com/assets/images/whatis/img-03@2x.png" class="whatis-grid__item03" alt="img">
-                        <img src="https://niftynafty.com/assets/images/whatis/img-04@2x.png" class="whatis-grid__item04" alt="img">
-                        <img src="https://niftynafty.com/assets/images/whatis/img-05@2x.png" class="whatis-grid__item05" alt="img">
-                        <picture>
-                            <source srcset="assets/images/whatis/img-06@mobile.png" media="(max-width: 524px)"
-                                type="image/webp">
-                            <img src="https://niftynafty.com/assets/images/whatis/img-06@2x.png" class="whatis-grid__item06" alt="img">
-                        </picture>
-                        <picture>
-                            <source srcset="assets/images/whatis/img-07@mobile.png" media="(max-width: 524px)"
-                                type="image/webp">
-                            <img src="https://niftynafty.com/assets/images/whatis/img-07@2x.png" class="whatis-grid__item07" alt="img">
-                        </picture> -->
-
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- WhatIs End -->
+
+    <div class="title_area" style="background-color: #000;">
+        <h2 style="font-family: 'NauSea'; letter-spacing: 2px; font-weight: 100;">CHANGELOG</h2>
+    </div>
+
+    <section class="changelog">
+
+
+        <div class="single_log">
+            <div class="log_date">
+                <div>
+                    DEC, 21
+                </div>
+                <div>
+                    2023
+                </div>
+            </div>
+
+            <div class="log_content">
+                <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                <div class="log_topic">
+                    NEWS</div>
+                <h2>Hello Noctis Fans!</h2>
+                <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the top
+                    (0%), remains transparent until the halfway point (50%), then transitions immediately to black at
+                    the halfway point (50%), and remains black until the bottom (100%).</p>
+                <img src="../assets/images/backgroundLandingPage.png" alt="">
+            </div>
+        </div>
+
+        <div class="log_divider"></div>
+
+
+
+        <div class="single_log">
+            <div class="log_date">
+                <div>
+                    DEC, 21
+                </div>
+                <div>
+                    2023
+                </div>
+            </div>
+
+            <div class="log_content">
+                <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                <div class="log_topic">
+                    NEWS</div>
+                <h2>Hello Noctis Fans!</h2>
+                <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the top
+                    (0%), remains transparent until the halfway point (50%), then transitions immediately to black at
+                    the halfway point (50%), and remains black until the bottom (100%).</p>
+                <img src="../assets/images/backgroundLandingPage.png" alt="">
+            </div>
+        </div>
+
+        <div class="log_divider"></div>
+
+        <div class="single_log">
+            <div class="log_date">
+                <div>
+                    DEC, 21
+                </div>
+                <div>
+                    2023
+                </div>
+            </div>
+
+            <div class="log_content">
+                <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                <div class="log_topic">
+                    NEWS</div>
+                <h2>Hello Noctis Fans!</h2>
+                <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the top
+                    (0%), remains transparent until the halfway point (50%), then transitions immediately to black at
+                    the halfway point (50%), and remains black until the bottom (100%).</p>
+                <img src="../assets/images/backgroundLandingPage.png" alt="">
+            </div>
+        </div>
+
+    </section>
+
+    <div class="title_area" style="background-color: var(--dark-blue);
+    ">
+        <h2 style="font-family: 'NauSea'; letter-spacing: 2px; font-weight: 100;">ROADMAP</h2>
+    </div>
+
+
+
+
+
+    <div class="calendar">
+        <div class="gantt">
+            <div class="gantt__row gantt__row--months">
+                <div class="gantt__row-first"></div>
+                <span>Jan</span><span>Feb</span><span>Mar</span>
+                <span>Apr</span><span>May</span><span>Jun</span>
+                <span>Jul</span><span>Aug</span><span>Sep</span>
+                <span>Oct</span><span>Nov</span><span>Dec</span>
+            </div>
+            <div class="gantt__row gantt__row--lines" data-month="5">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+
+
+            <div class="gantt__row">
+                <div class="gantt__row-first">
+                </div>
+                <ul class="gantt__row-bars">
+                    <li style="grid-column: 6/12;">
+                        <div class="progress-bar">
+                            <h3 style="padding: 10px;">
+                                Title
+                            </h3>
+                            <p class="progress-value" style="padding: 10px;">
+                                23%
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+
+            <div class="gantt__row">
+                <div class="gantt__row-first">
+                </div>
+                <ul class="gantt__row-bars">
+                    <li style="grid-column: 4/8;">
+                        <div class="progress-bar">
+                            <h3 style="padding: 10px;">
+                                Title
+                            </h3>
+                            <p class="progress-value" style="padding: 10px;">
+                                23%
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="gantt__row">
+                <div class="gantt__row-first">
+                </div>
+                <ul class="gantt__row-bars">
+                    <li style="grid-column: 9/11;">
+                        <div class="progress-bar">
+                            <h3 style="padding: 10px;">
+                                Title
+                            </h3>
+                            <p class="progress-value" style="padding: 10px;">
+                                23%
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="gantt__row">
+                <div class="gantt__row-first">
+                </div>
+                <ul class="gantt__row-bars">
+                    <li style="grid-column: 1/2;">
+                        <div class="progress-bar">
+                            <h3 style="padding: 10px;">
+                                Title
+                            </h3>
+                            <p class="progress-value" style="padding: 10px;">
+                                23%
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="gantt__row">
+                <div class="gantt__row-first">
+                </div>
+                <ul class="gantt__row-bars">
+                    <li style="grid-column: 3/6;">
+                        <div class="progress-bar">
+                            <h3 style="padding: 10px;">
+                                Title
+                            </h3>
+                            <p class="progress-value" style="padding: 10px;">
+                                23%
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
 
     <section class="roadmap" id="roadmap">
         <div class="container">
@@ -485,7 +736,6 @@
                 </p>
                 <a href="https://discord.gg/tvZhnBzy" target="_blank" class="btn nf__btn">
                     <span class="btn__text">Read Full Version</span>
-                    <img src="https://NIFTYNAFTY.COM/assets/images/glass.png" alt="glass" class="btn__glass">
                 </a>
             </div>
         </div>
@@ -857,7 +1107,6 @@
             <h2 class="ownnf__title squiggly">Get Your Own NOCTIS</h2>
             <a class="ownnf__btn" href="/mint">
                 <span>Mint Now</span>
-                <img src="https://NIFTYNAFTY.COM/assets/images/glass.png" alt="glass">
             </a>
         </div>
     </section>
@@ -910,7 +1159,7 @@
                 </div>
             </div>
             <div class="footer-copyright">
-                <p class="footer-copyright__text">Copyright © 2021. All rights reserved</p>
+                <p class="footer-copyright__text">Copyright © 2024. All rights reserved</p>
                 <!-- <nav class="footer-copyright__nav">
                     <a to="#terms" class="footer-copyright__nav-link">Terms of Service</a>
                     <a to="#privacy" class="footer-copyright__nav-link">Privacy Policy</a>

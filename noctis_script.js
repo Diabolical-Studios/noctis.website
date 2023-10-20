@@ -231,6 +231,60 @@
 
 
 
+        // Function to get the number of days in a month
+        function daysInMonth(month, year) {
+          return new Date(year, month, 0).getDate();
+        }
+
+        // Get the current date
+        const currentDate = new Date();
+        const currentDay = currentDate.getDate();
+        const currentMonth = currentDate.getMonth(); // Months are 0-indexed (0 = January, 11 = December)
+        const currentYear = currentDate.getFullYear();
+
+        const progressBars = document.querySelectorAll('.gantt__row-bars li');
+
+        progressBars.forEach(bar => {
+          const gridColumn = window.getComputedStyle(bar, null).getPropertyValue("grid-column");
+          const [startMonth, endMonth] = gridColumn.split('/').map(value => parseInt(value.trim()) - 1); // Subtracting 1 to make it 0-indexed
+
+          // Calculate the total days between the start and end months
+          let totalDays = 0;
+          for (let i = startMonth; i <= endMonth; i++) {
+            totalDays += daysInMonth(i + 1, currentYear);
+          }
+
+          // Calculate the days passed since the start month
+          let daysPassed = 0;
+          for (let i = startMonth; i < currentMonth; i++) {
+            daysPassed += daysInMonth(i + 1, currentYear);
+          }
+          if (currentMonth >= startMonth && currentMonth <= endMonth) {
+            daysPassed += currentDay;
+          }
+
+          // Calculate the percentage of days passed within the total days
+          let percentage = (daysPassed / totalDays) * 100;
+
+          // Ensure the percentage does not exceed 100% or fall below 0%
+          if (currentMonth > endMonth) {
+            percentage = 100;
+          } else if (currentMonth < startMonth) {
+            percentage = 0;
+          }
+
+          // Apply the percentage to the progress bar inside the current li
+          const progressBar = bar.querySelector('.progress-bar');
+          progressBar.style.width = `${percentage}%`;
+
+          // Update the value inside the <p> tag inside the current li
+          const progressValue = bar.querySelector('.progress-value');
+          progressValue.textContent = `${percentage.toFixed(0)}%`;
+        });
+
+
+
+
         // Init Timer
 
         initQuiz();
@@ -375,7 +429,6 @@
             }
           });
         } // Faq
-
 
         faqInit();
 
@@ -683,7 +736,7 @@
         renderer/* default.render */.Z.render(animationHandlers);
 
         /***/
-}),
+      }),
 
     /***/ 2362:
     /***/ ((module, exports, __webpack_require__) => {
@@ -1058,7 +1111,7 @@
         }();
 
         /***/
-}),
+      }),
 
     /***/ 7645:
     /***/ ((__unused_webpack_module, exports) => {
@@ -1147,7 +1200,7 @@
         exports.Z = _default;
 
         /***/
-}),
+      }),
 
     /***/ 7353:
     /***/ ((module, __unused_webpack___webpack_exports__, __webpack_require__) => {
@@ -1164,10 +1217,10 @@
 
 
         /***/
-})
+      })
 
     /******/
-});
+  });
     /************************************************************************/
     /******/ 	// The module cache
     /******/ 	var __webpack_module_cache__ = {};
@@ -1180,14 +1233,14 @@
     /******/ 			if (cachedModule.error !== undefined) throw cachedModule.error;
     /******/ 			return cachedModule.exports;
       /******/
-}
+    }
     /******/ 		// Create a new module (and put it into the cache)
     /******/ 		var module = __webpack_module_cache__[moduleId] = {
     /******/ 			id: moduleId,
     /******/ 			loaded: false,
     /******/ 			exports: {}
       /******/
-};
+    };
     /******/
     /******/ 		// Execute the module function
     /******/ 		try {
@@ -1196,11 +1249,11 @@
     /******/ 			module = execOptions.module;
     /******/ 			execOptions.factory.call(module.exports, module, module.exports, execOptions.require);
       /******/
-} catch (e) {
+    } catch (e) {
     /******/ 			module.error = e;
     /******/ 			throw e;
       /******/
-}
+    }
     /******/
     /******/ 		// Flag the module as loaded
     /******/ 		module.loaded = true;
@@ -1208,7 +1261,7 @@
     /******/ 		// Return the exports of the module
     /******/ 		return module.exports;
     /******/
-}
+  }
     /******/
     /******/ 	// expose the modules object (__webpack_modules__)
     /******/ 	__webpack_require__.m = __webpack_modules__;
@@ -1230,7 +1283,7 @@
     /******/ 				deferred[i] = [chunkIds, fn, priority];
     /******/ 				return;
         /******/
-}
+      }
     /******/ 			var notFulfilled = Infinity;
     /******/ 			for (var i = 0; i < deferred.length; i++) {
     /******/ 				var [chunkIds, fn, priority] = deferred[i];
@@ -1239,25 +1292,25 @@
     /******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
     /******/ 						chunkIds.splice(j--, 1);
             /******/
-} else {
+          } else {
     /******/ 						fulfilled = false;
     /******/ 						if (priority < notFulfilled) notFulfilled = priority;
             /******/
-}
+          }
           /******/
-}
+        }
     /******/ 				if (fulfilled) {
     /******/ 					deferred.splice(i--, 1)
     /******/ 					result = fn();
           /******/
-}
+        }
         /******/
-}
+      }
     /******/ 			return result;
       /******/
-};
+    };
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/compat get default export */
     /******/ 	(() => {
@@ -1269,9 +1322,9 @@
     /******/ 			__webpack_require__.d(getter, { a: getter });
     /******/ 			return getter;
       /******/
-};
+    };
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/define property getters */
     /******/ 	(() => {
@@ -1281,13 +1334,13 @@
     /******/ 				if (__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
     /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
           /******/
-}
+        }
         /******/
-}
+      }
       /******/
-};
+    };
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/get javascript update chunk filename */
     /******/ 	(() => {
@@ -1296,9 +1349,9 @@
     /******/ 			// return url for filenames based on template
     /******/ 			return "" + chunkId + "." + __webpack_require__.h() + ".hot-update.js";
       /******/
-};
+    };
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/get mini-css chunk filename */
     /******/ 	(() => {
@@ -1307,21 +1360,21 @@
     /******/ 			// return url for filenames based on template
     /******/ 			return undefined;
       /******/
-};
+    };
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/get update manifest filename */
     /******/ 	(() => {
     /******/ 		__webpack_require__.hmrF = () => ("index." + __webpack_require__.h() + ".hot-update.json");
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/getFullHash */
     /******/ 	(() => {
     /******/ 		__webpack_require__.h = () => ("b99296712c9794052d65")
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/global */
     /******/ 	(() => {
@@ -1330,20 +1383,20 @@
     /******/ 			try {
     /******/ 				return this || new Function('return this')();
         /******/
-} catch (e) {
+      } catch (e) {
     /******/ 				if (typeof window === 'object') return window;
         /******/
-}
+      }
       /******/
-})();
+    })();
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
     /******/ 	(() => {
     /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/load script */
     /******/ 	(() => {
@@ -1359,9 +1412,9 @@
     /******/ 					var s = scripts[i];
     /******/ 					if (s.getAttribute("src") == url) { script = s; break; }
           /******/
-}
+        }
         /******/
-}
+      }
     /******/ 			if (!script) {
     /******/ 				needAttach = true;
     /******/ 				script = document.createElement('script');
@@ -1371,11 +1424,11 @@
     /******/ 				if (__webpack_require__.nc) {
     /******/ 					script.setAttribute("nonce", __webpack_require__.nc);
           /******/
-}
+        }
     /******/
     /******/ 				script.src = url;
         /******/
-}
+      }
     /******/ 			inProgress[url] = [done];
     /******/ 			var onScriptComplete = (prev, event) => {
     /******/ 				// avoid mem leaks in IE.
@@ -1387,16 +1440,16 @@
     /******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
     /******/ 				if (prev) return prev(event);
         /******/
-}
+      }
     /******/;
     /******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
     /******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
     /******/ 			script.onload = onScriptComplete.bind(null, script.onload);
     /******/ 			needAttach && document.head.appendChild(script);
       /******/
-};
+    };
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/node module decorator */
     /******/ 	(() => {
@@ -1405,9 +1458,9 @@
     /******/ 			if (!module.children) module.children = [];
     /******/ 			return module;
       /******/
-};
+    };
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/hot module replacement */
     /******/ 	(() => {
@@ -1440,8 +1493,8 @@
     /******/ 			module.children = [];
     /******/ 			currentParents = [];
     /******/ 			options.require = require;
-          /******/
-});
+    /******/
+  });
     /******/
     /******/ 		__webpack_require__.hmrC = {};
     /******/ 		__webpack_require__.hmrI = {};
@@ -1456,19 +1509,19 @@
     /******/ 						if (parents.indexOf(moduleId) === -1) {
     /******/ 							parents.push(moduleId);
               /******/
-}
+            }
             /******/
-} else {
+          } else {
     /******/ 						currentParents = [moduleId];
     /******/ 						currentChildModule = request;
             /******/
-}
+          }
     /******/ 					if (me.children.indexOf(request) === -1) {
     /******/ 						me.children.push(request);
             /******/
-}
+          }
           /******/
-} else {
+        } else {
     /******/ 					console.warn(
     /******/ 						"[HMR] unexpected require(" +
     /******/ 							request +
@@ -1477,10 +1530,10 @@
     /******/);
     /******/ 					currentParents = [];
           /******/
-}
+        }
     /******/ 				return require(request);
         /******/
-};
+      };
     /******/ 			var createPropertyDescriptor = function (name) {
     /******/ 				return {
     /******/ 					configurable: true,
@@ -1488,29 +1541,29 @@
     /******/ 					get: function () {
     /******/ 						return require[name];
             /******/
-},
+          },
     /******/ 					set: function (value) {
     /******/ 						require[name] = value;
             /******/
-}
+          }
           /******/
-};
+        };
         /******/
-};
+      };
     /******/ 			for (var name in require) {
     /******/ 				if (Object.prototype.hasOwnProperty.call(require, name) && name !== "e") {
     /******/ 					Object.defineProperty(fn, name, createPropertyDescriptor(name));
           /******/
-}
+        }
         /******/
-}
+      }
     /******/ 			fn.e = function (chunkId) {
     /******/ 				return trackBlockingPromise(require.e(chunkId));
         /******/
-};
+      };
     /******/ 			return fn;
       /******/
-}
+    }
     /******/
     /******/ 		function createModuleHotObject(moduleId, me) {
     /******/ 			var _main = currentChildModule !== moduleId;
@@ -1529,7 +1582,7 @@
     /******/ 					currentChildModule = _main ? undefined : moduleId;
     /******/ 					__webpack_require__(moduleId);
           /******/
-},
+        },
     /******/
     /******/ 				// Module API
     /******/ 				active: true,
@@ -1541,15 +1594,15 @@
     /******/ 							hot._acceptedDependencies[dep[i]] = callback || function () { };
     /******/ 							hot._acceptedErrorHandlers[dep[i]] = errorHandler;
               /******/
-}
+            }
             /******/
-} else {
+          } else {
     /******/ 						hot._acceptedDependencies[dep] = callback || function () { };
     /******/ 						hot._acceptedErrorHandlers[dep] = errorHandler;
             /******/
-}
+          }
           /******/
-},
+        },
     /******/ 				decline: function (dep) {
     /******/ 					if (dep === undefined) hot._selfDeclined = true;
     /******/ 					else if (typeof dep === "object" && dep !== null)
@@ -1557,20 +1610,20 @@
     /******/ 							hot._declinedDependencies[dep[i]] = true;
     /******/ 					else hot._declinedDependencies[dep] = true;
           /******/
-},
+        },
     /******/ 				dispose: function (callback) {
     /******/ 					hot._disposeHandlers.push(callback);
           /******/
-},
+        },
     /******/ 				addDisposeHandler: function (callback) {
     /******/ 					hot._disposeHandlers.push(callback);
           /******/
-},
+        },
     /******/ 				removeDisposeHandler: function (callback) {
     /******/ 					var idx = hot._disposeHandlers.indexOf(callback);
     /******/ 					if (idx >= 0) hot._disposeHandlers.splice(idx, 1);
           /******/
-},
+        },
     /******/ 				invalidate: function () {
     /******/ 					this._selfInvalidated = true;
     /******/ 					switch (currentStatus) {
@@ -1582,7 +1635,7 @@
     /******/ 									currentUpdateApplyHandlers
     /******/);
           /******/
-});
+        });
     /******/ 							setStatus("ready");
     /******/ 							break;
     /******/ 						case "ready":
@@ -1592,7 +1645,7 @@
     /******/ 									currentUpdateApplyHandlers
     /******/);
           /******/
-});
+        });
     /******/ 							break;
     /******/ 						case "prepare":
     /******/ 						case "check":
@@ -1606,9 +1659,9 @@
     /******/ 							// ignore requests in error states
     /******/ 							break;
             /******/
-}
+          }
           /******/
-},
+        },
     /******/
     /******/ 				// Management API
     /******/ 				check: hotCheck,
@@ -1617,32 +1670,32 @@
     /******/ 					if (!l) return currentStatus;
     /******/ 					registeredStatusHandlers.push(l);
           /******/
-},
+        },
     /******/ 				addStatusHandler: function (l) {
     /******/ 					registeredStatusHandlers.push(l);
           /******/
-},
+        },
     /******/ 				removeStatusHandler: function (l) {
     /******/ 					var idx = registeredStatusHandlers.indexOf(l);
     /******/ 					if (idx >= 0) registeredStatusHandlers.splice(idx, 1);
           /******/
-},
+        },
     /******/
     /******/ 				//inherit from previous dispose call
     /******/ 				data: currentModuleData[moduleId]
         /******/
-};
+      };
     /******/ 			currentChildModule = undefined;
     /******/ 			return hot;
       /******/
-}
+    }
     /******/
     /******/ 		function setStatus(newStatus) {
     /******/ 			currentStatus = newStatus;
     /******/ 			for (var i = 0; i < registeredStatusHandlers.length; i++)
     /******/ 				registeredStatusHandlers[i].call(null, newStatus);
       /******/
-}
+    }
     /******/
     /******/ 		function trackBlockingPromise(promise) {
     /******/ 			switch (currentStatus) {
@@ -1651,8 +1704,8 @@
     /******/ 					blockingPromises.push(promise);
     /******/ 					waitForBlockingPromises(function () {
     /******/ 						setStatus("ready");
-          /******/
-});
+      /******/
+    });
     /******/ 					return promise;
     /******/ 				case "prepare":
     /******/ 					blockingPromises.push(promise);
@@ -1660,9 +1713,9 @@
     /******/ 				default:
     /******/ 					return promise;
         /******/
-}
+      }
       /******/
-}
+    }
     /******/
     /******/ 		function waitForBlockingPromises(fn) {
     /******/ 			if (blockingPromises.length === 0) return fn();
@@ -1670,23 +1723,23 @@
     /******/ 			blockingPromises = [];
     /******/ 			return Promise.all(blocker).then(function () {
     /******/ 				return waitForBlockingPromises(fn);
-          /******/
-});
       /******/
-}
+    });
+      /******/
+    }
     /******/
     /******/ 		function hotCheck(applyOnUpdate) {
     /******/ 			if (currentStatus !== "idle") {
     /******/ 				throw new Error("check() is only allowed in idle status");
         /******/
-}
+      }
     /******/ 			setStatus("check");
     /******/ 			return __webpack_require__.hmrM().then(function (update) {
     /******/ 				if (!update) {
     /******/ 					setStatus(applyInvalidatedModules() ? "ready" : "idle");
     /******/ 					return null;
-            /******/
-}
+          /******/
+        }
     /******/
     /******/ 				setStatus("prepare");
     /******/
@@ -1709,39 +1762,39 @@
     /******/);
     /******/ 						return promises;
           /******/
-},
+        },
     /******/[])
     /******/).then(function () {
     /******/ 					return waitForBlockingPromises(function () {
     /******/ 						if (applyOnUpdate) {
     /******/ 							return internalApply(applyOnUpdate);
             /******/
-} else {
+          } else {
     /******/ 							setStatus("ready");
     /******/
     /******/ 							return updatedModules;
             /******/
-}
+          }
           /******/
-});
+        });
           /******/
-});
-          /******/
-});
+        });
+        /******/
+      });
       /******/
-}
+    }
     /******/
     /******/ 		function hotApply(options) {
     /******/ 			if (currentStatus !== "ready") {
     /******/ 				return Promise.resolve().then(function () {
     /******/ 					throw new Error("apply() is only allowed in ready status");
-          /******/
-});
+      /******/
+    });
         /******/
-}
+      }
     /******/ 			return internalApply(options);
       /******/
-}
+    }
     /******/
     /******/ 		function internalApply(options) {
     /******/ 			options = options || {};
@@ -1750,33 +1803,33 @@
     /******/
     /******/ 			var results = currentUpdateApplyHandlers.map(function (handler) {
     /******/ 				return handler(options);
-          /******/
-});
+      /******/
+    });
     /******/ 			currentUpdateApplyHandlers = undefined;
     /******/
     /******/ 			var errors = results
     /******/.map(function (r) {
     /******/ 					return r.error;
-          /******/
-})
+      /******/
+    })
     /******/.filter(Boolean);
     /******/
     /******/ 			if (errors.length > 0) {
     /******/ 				setStatus("abort");
     /******/ 				return Promise.resolve().then(function () {
     /******/ 					throw errors[0];
-          /******/
-});
+      /******/
+    });
         /******/
-}
+      }
     /******/
     /******/ 			// Now in "dispose" phase
     /******/ 			setStatus("dispose");
     /******/
     /******/ 			results.forEach(function (result) {
     /******/ 				if (result.dispose) result.dispose();
-          /******/
-});
+        /******/
+      });
     /******/
     /******/ 			// Now in "apply" phase
     /******/ 			setStatus("apply");
@@ -1785,7 +1838,7 @@
     /******/ 			var reportError = function (err) {
     /******/ 				if (!error) error = err;
         /******/
-};
+      };
     /******/
     /******/ 			var outdatedModules = [];
     /******/ 			results.forEach(function (result) {
@@ -1794,41 +1847,41 @@
     /******/ 					if (modules) {
     /******/ 						for (var i = 0; i < modules.length; i++) {
     /******/ 							outdatedModules.push(modules[i]);
-                /******/
-}
               /******/
-}
+            }
             /******/
-}
+          }
           /******/
-});
+        }
+        /******/
+      });
     /******/
     /******/ 			// handle errors in accept handlers and self accepted module load
     /******/ 			if (error) {
     /******/ 				setStatus("fail");
     /******/ 				return Promise.resolve().then(function () {
     /******/ 					throw error;
-          /******/
-});
         /******/
-}
+      });
+        /******/
+      }
     /******/
     /******/ 			if (queuedInvalidatedModules) {
     /******/ 				return internalApply(options).then(function (list) {
     /******/ 					outdatedModules.forEach(function (moduleId) {
     /******/ 						if (list.indexOf(moduleId) < 0) list.push(moduleId);
-          /******/
-});
-    /******/ 					return list;
-          /******/
-});
         /******/
-}
+      });
+    /******/ 					return list;
+        /******/
+      });
+        /******/
+      }
     /******/
     /******/ 			setStatus("idle");
     /******/ 			return Promise.resolve(outdatedModules);
       /******/
-}
+    }
     /******/
     /******/ 		function applyInvalidatedModules() {
     /******/ 			if (queuedInvalidatedModules) {
@@ -1839,18 +1892,18 @@
     /******/ 							moduleId,
     /******/ 							currentUpdateApplyHandlers
     /******/);
-          /******/
-});
-          /******/
-});
+      /******/
+    });
+      /******/
+    });
     /******/ 				queuedInvalidatedModules = undefined;
     /******/ 				return true;
         /******/
-}
+      }
       /******/
-}
+    }
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/publicPath */
     /******/ 	(() => {
@@ -1864,16 +1917,16 @@
     /******/ 				var scripts = document.getElementsByTagName("script");
     /******/ 				if (scripts.length) scriptUrl = scripts[scripts.length - 1].src
         /******/
-}
+      }
       /******/
-}
+    }
     /******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
     /******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
     /******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
     /******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
     /******/ 		__webpack_require__.p = scriptUrl;
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/css loading */
     /******/ 	(() => {
@@ -1888,7 +1941,7 @@
     /******/ 				if (event.type === 'load') {
     /******/ 					resolve();
           /******/
-} else {
+        } else {
     /******/ 					var errorType = event && (event.type === 'load' ? 'missing' : event.type);
     /******/ 					var realHref = event && event.target && event.target.href || fullhref;
     /******/ 					var err = new Error("Loading CSS chunk " + chunkId + " failed.\n(" + realHref + ")");
@@ -1898,16 +1951,16 @@
     /******/ 					linkTag.parentNode.removeChild(linkTag)
     /******/ 					reject(err);
           /******/
-}
+        }
         /******/
-}
+      }
     /******/ 			linkTag.onerror = linkTag.onload = onLinkComplete;
     /******/ 			linkTag.href = fullhref;
     /******/
     /******/ 			document.head.appendChild(linkTag);
     /******/ 			return linkTag;
       /******/
-};
+    };
     /******/ 		var findStylesheet = (href, fullhref) => {
     /******/ 			var existingLinkTags = document.getElementsByTagName("link");
     /******/ 			for (var i = 0; i < existingLinkTags.length; i++) {
@@ -1915,26 +1968,26 @@
     /******/ 				var dataHref = tag.getAttribute("data-href") || tag.getAttribute("href");
     /******/ 				if (tag.rel === "stylesheet" && (dataHref === href || dataHref === fullhref)) return tag;
         /******/
-}
+      }
     /******/ 			var existingStyleTags = document.getElementsByTagName("style");
     /******/ 			for (var i = 0; i < existingStyleTags.length; i++) {
     /******/ 				var tag = existingStyleTags[i];
     /******/ 				var dataHref = tag.getAttribute("data-href");
     /******/ 				if (dataHref === href || dataHref === fullhref) return tag;
         /******/
-}
+      }
       /******/
-};
+    };
     /******/ 		var loadStylesheet = (chunkId) => {
     /******/ 			return new Promise((resolve, reject) => {
     /******/ 				var href = __webpack_require__.miniCssF(chunkId);
     /******/ 				var fullhref = __webpack_require__.p + href;
     /******/ 				if (findStylesheet(href, fullhref)) return resolve();
     /******/ 				createStylesheet(chunkId, fullhref, resolve, reject);
-          /******/
-});
       /******/
-}
+    });
+      /******/
+    }
     /******/ 		// no chunk loading
     /******/
     /******/ 		var oldTags = [];
@@ -1946,17 +1999,17 @@
     /******/ 					var oldTag = oldTags[i];
     /******/ 					if (oldTag.parentNode) oldTag.parentNode.removeChild(oldTag);
             /******/
-}
+          }
     /******/ 				oldTags.length = 0;
           /******/
-}, apply: () => {
+        }, apply: () => {
     /******/ 				for (var i = 0; i < newTags.length; i++) newTags[i].rel = "stylesheet";
     /******/ 				newTags.length = 0;
           /******/
-}
+        }
       };
       /******/
-}
+    }
     /******/ 		__webpack_require__.hmrC.miniCss = (chunkIds, removedChunks, removedModules, promises, applyHandlers, updatedModulesList) => {
     /******/ 			applyHandlers.push(applyHandler);
     /******/ 			chunkIds.forEach((chunkId) => {
@@ -1969,18 +2022,18 @@
     /******/ 						tag.as = "style";
     /******/ 						tag.rel = "preload";
     /******/ 						resolve();
-        /******/
-}, reject);
+      /******/
+    }, reject);
     /******/ 					oldTags.push(oldTag);
     /******/ 					newTags.push(tag);
-        /******/
-}));
-        /******/
-});
       /******/
-}
+    }));
+      /******/
+    });
+      /******/
+    }
     /******/
-})();
+  })();
     /******/
     /******/ 	/* webpack/runtime/jsonp chunk loading */
     /******/ 	(() => {
@@ -1992,7 +2045,7 @@
     /******/ 		var installedChunks = {
     /******/ 			826: 0
       /******/
-};
+    };
     /******/
     /******/ 		// no chunk on demand loading
     /******/
@@ -2019,15 +2072,15 @@
     /******/ 						error.type = errorType;
     /******/ 						error.request = realSrc;
     /******/ 						reject(error);
-            /******/
-}
           /******/
-};
-    /******/ 				__webpack_require__.l(url, loadingEnded);
+        }
         /******/
-});
+      };
+    /******/ 				__webpack_require__.l(url, loadingEnded);
       /******/
-}
+    });
+      /******/
+    }
     /******/
     /******/ 		self["webpackHotUpdate"] = (chunkId, moreModules, runtime) => {
     /******/ 			for (var moduleId in moreModules) {
@@ -2035,17 +2088,17 @@
     /******/ 					currentUpdate[moduleId] = moreModules[moduleId];
     /******/ 					if (currentUpdatedModulesList) currentUpdatedModulesList.push(moduleId);
           /******/
-}
+        }
         /******/
-}
+      }
     /******/ 			if (runtime) currentUpdateRuntime.push(runtime);
     /******/ 			if (waitingUpdateResolves[chunkId]) {
     /******/ 				waitingUpdateResolves[chunkId]();
     /******/ 				waitingUpdateResolves[chunkId] = undefined;
         /******/
-}
+      }
       /******/
-};
+    };
     /******/
     /******/ 		var currentUpdateChunks;
     /******/ 		var currentUpdate;
@@ -2062,10 +2115,10 @@
     /******/ 					return {
     /******/ 						chain: [id],
     /******/ 						id: id
-          /******/
-};
         /******/
-});
+      };
+      /******/
+    });
     /******/ 				while (queue.length > 0) {
     /******/ 					var queueItem = queue.pop();
     /******/ 					var moduleId = queueItem.id;
@@ -2082,18 +2135,18 @@
     /******/ 							chain: chain,
     /******/ 							moduleId: moduleId
               /******/
-};
+            };
             /******/
-}
+          }
     /******/ 					if (module.hot._main) {
     /******/ 						return {
     /******/ 							type: "unaccepted",
     /******/ 							chain: chain,
     /******/ 							moduleId: moduleId
               /******/
-};
+            };
             /******/
-}
+          }
     /******/ 					for (var i = 0; i < module.parents.length; i++) {
     /******/ 						var parentId = module.parents[i];
     /******/ 						var parent = __webpack_require__.c[parentId];
@@ -2105,9 +2158,9 @@
     /******/ 								moduleId: moduleId,
     /******/ 								parentId: parentId
                 /******/
-};
+              };
               /******/
-}
+            }
     /******/ 						if (outdatedModules.indexOf(parentId) !== -1) continue;
     /******/ 						if (parent.hot._acceptedDependencies[moduleId]) {
     /******/ 							if (!outdatedDependencies[parentId])
@@ -2115,18 +2168,18 @@
     /******/ 							addAllToSet(outdatedDependencies[parentId], [moduleId]);
     /******/ 							continue;
               /******/
-}
+            }
     /******/ 						delete outdatedDependencies[parentId];
     /******/ 						outdatedModules.push(parentId);
     /******/ 						queue.push({
     /******/ 							chain: chain.concat([parentId]),
     /******/ 							id: parentId
-        /******/
-});
+              /******/
+            });
             /******/
-}
+          }
           /******/
-}
+        }
     /******/
     /******/ 				return {
     /******/ 					type: "accepted",
@@ -2134,18 +2187,18 @@
     /******/ 					outdatedModules: outdatedModules,
     /******/ 					outdatedDependencies: outdatedDependencies
           /******/
-};
+        };
         /******/
-}
+      }
     /******/
     /******/ 			function addAllToSet(a, b) {
     /******/ 				for (var i = 0; i < b.length; i++) {
     /******/ 					var item = b[i];
     /******/ 					if (a.indexOf(item) === -1) a.push(item);
           /******/
-}
+        }
         /******/
-}
+      }
     /******/
     /******/ 			// at begin all updates modules are outdated
     /******/ 			// the "outdated" status can propagate to parents if they don't accept the children
@@ -2158,7 +2211,7 @@
     /******/ 					"[HMR] unexpected require(" + module.id + ") to disposed module"
     /******/);
         /******/
-};
+      };
     /******/
     /******/ 			for (var moduleId in currentUpdate) {
     /******/ 				if (__webpack_require__.o(currentUpdate, moduleId)) {
@@ -2168,14 +2221,14 @@
     /******/ 					if (newModuleFactory) {
     /******/ 						result = getAffectedModuleEffects(moduleId);
             /******/
-} else {
+          } else {
     /******/ 						result = {
     /******/ 							type: "disposed",
     /******/ 							moduleId: moduleId
               /******/
-};
+            };
             /******/
-}
+          }
     /******/ 					/** @type {Error|false} */
     /******/ 					var abortError = false;
     /******/ 					var doApply = false;
@@ -2184,7 +2237,7 @@
     /******/ 					if (result.chain) {
     /******/ 						chainInfo = "\nUpdate propagation: " + result.chain.join(" -> ");
             /******/
-}
+          }
     /******/ 					switch (result.type) {
     /******/ 						case "self-declined":
     /******/ 							if (options.onDeclined) options.onDeclined(result);
@@ -2224,14 +2277,14 @@
     /******/ 						default:
     /******/ 							throw new Error("Unexception type " + result.type);
             /******/
-}
+          }
     /******/ 					if (abortError) {
     /******/ 						return {
     /******/ 							error: abortError
               /******/
-};
+            };
             /******/
-}
+          }
     /******/ 					if (doApply) {
     /******/ 						appliedUpdate[moduleId] = newModuleFactory;
     /******/ 						addAllToSet(outdatedModules, result.outdatedModules);
@@ -2244,20 +2297,20 @@
     /******/ 									result.outdatedDependencies[moduleId]
     /******/);
                 /******/
-}
+              }
               /******/
-}
+            }
             /******/
-}
+          }
     /******/ 					if (doDispose) {
     /******/ 						addAllToSet(outdatedModules, [result.moduleId]);
     /******/ 						appliedUpdate[moduleId] = warnUnexpectedRequire;
             /******/
-}
+          }
           /******/
-}
+        }
         /******/
-}
+      }
     /******/ 			currentUpdate = undefined;
     /******/
     /******/ 			// Store self accepted outdated modules to require them later by the module system
@@ -2278,11 +2331,11 @@
     /******/ 						require: module.hot._requireSelf,
     /******/ 						errorHandler: module.hot._selfAccepted
         /******/
-});
+      });
           /******/
-}
+        }
         /******/
-}
+      }
     /******/
     /******/ 			var moduleOutdatedDependencies;
     /******/
@@ -2291,7 +2344,7 @@
     /******/ 					currentUpdateRemovedChunks.forEach(function (chunkId) {
     /******/ 						delete installedChunks[chunkId];
         /******/
-});
+      });
     /******/ 					currentUpdateRemovedChunks = undefined;
     /******/
     /******/ 					var idx;
@@ -2308,7 +2361,7 @@
     /******/ 						for (j = 0; j < disposeHandlers.length; j++) {
     /******/ 							disposeHandlers[j].call(null, data);
               /******/
-}
+            }
     /******/ 						__webpack_require__.hmrD[moduleId] = data;
     /******/
     /******/ 						// disable module (this disables requires from this module)
@@ -2328,11 +2381,11 @@
     /******/ 							if (idx >= 0) {
     /******/ 								child.parents.splice(idx, 1);
                 /******/
-}
+              }
               /******/
-}
+            }
             /******/
-}
+          }
     /******/
     /******/ 					// remove outdated dependency from module children
     /******/ 					var dependency;
@@ -2347,30 +2400,30 @@
     /******/ 									idx = module.children.indexOf(dependency);
     /******/ 									if (idx >= 0) module.children.splice(idx, 1);
                   /******/
-}
+                }
                 /******/
-}
+              }
               /******/
-}
+            }
             /******/
-}
+          }
           /******/
-},
+        },
     /******/ 				apply: function (reportError) {
     /******/ 					// insert new code
     /******/ 					for (var updateModuleId in appliedUpdate) {
     /******/ 						if (__webpack_require__.o(appliedUpdate, updateModuleId)) {
     /******/ 							__webpack_require__.m[updateModuleId] = appliedUpdate[updateModuleId];
               /******/
-}
+            }
             /******/
-}
+          }
     /******/
     /******/ 					// run new runtime modules
     /******/ 					for (var i = 0; i < currentUpdateRuntime.length; i++) {
     /******/ 						currentUpdateRuntime[i](__webpack_require__);
             /******/
-}
+          }
     /******/
     /******/ 					// call accept handlers
     /******/ 					for (var outdatedModuleId in outdatedDependencies) {
@@ -2394,23 +2447,23 @@
     /******/ 										errorHandlers.push(errorHandler);
     /******/ 										dependenciesForCallbacks.push(dependency);
                     /******/
-}
+                  }
                   /******/
-}
+                }
     /******/ 								for (var k = 0; k < callbacks.length; k++) {
     /******/ 									try {
     /******/ 										callbacks[k].call(null, moduleOutdatedDependencies);
                     /******/
-} catch (err) {
+                  } catch (err) {
     /******/ 										if (typeof errorHandlers[k] === "function") {
     /******/ 											try {
     /******/ 												errorHandlers[k](err, {
     /******/ 													moduleId: outdatedModuleId,
     /******/ 													dependencyId: dependenciesForCallbacks[k]
-        /******/
-});
+                    /******/
+                  });
                         /******/
-} catch (err2) {
+                      } catch (err2) {
     /******/ 												if (options.onErrored) {
     /******/ 													options.onErrored({
     /******/ 														type: "accept-error-handler-errored",
@@ -2418,45 +2471,45 @@
     /******/ 														dependencyId: dependenciesForCallbacks[k],
     /******/ 														error: err2,
     /******/ 														originalError: err
-        /******/
-});
+                        /******/
+                      });
                           /******/
-}
+                        }
     /******/ 												if (!options.ignoreErrored) {
     /******/ 													reportError(err2);
     /******/ 													reportError(err);
                           /******/
-}
+                        }
                         /******/
-}
+                      }
                       /******/
-} else {
+                    } else {
     /******/ 											if (options.onErrored) {
     /******/ 												options.onErrored({
     /******/ 													type: "accept-errored",
     /******/ 													moduleId: outdatedModuleId,
     /******/ 													dependencyId: dependenciesForCallbacks[k],
     /******/ 													error: err
-        /******/
-});
+                      /******/
+                    });
                         /******/
-}
+                      }
     /******/ 											if (!options.ignoreErrored) {
     /******/ 												reportError(err);
                         /******/
-}
+                      }
                       /******/
-}
+                    }
                     /******/
-}
+                  }
                   /******/
-}
+                }
                 /******/
-}
+              }
               /******/
-}
+            }
             /******/
-}
+          }
     /******/
     /******/ 					// Load self accepted modules
     /******/ 					for (var o = 0; o < outdatedSelfAcceptedModules.length; o++) {
@@ -2465,62 +2518,62 @@
     /******/ 						try {
     /******/ 							item.require(moduleId);
               /******/
-} catch (err) {
+            } catch (err) {
     /******/ 							if (typeof item.errorHandler === "function") {
     /******/ 								try {
     /******/ 									item.errorHandler(err, {
     /******/ 										moduleId: moduleId,
     /******/ 										module: __webpack_require__.c[moduleId]
-        /******/
-});
+              /******/
+            });
                   /******/
-} catch (err2) {
+                } catch (err2) {
     /******/ 									if (options.onErrored) {
     /******/ 										options.onErrored({
     /******/ 											type: "self-accept-error-handler-errored",
     /******/ 											moduleId: moduleId,
     /******/ 											error: err2,
     /******/ 											originalError: err
-        /******/
-});
+                  /******/
+                });
                     /******/
-}
+                  }
     /******/ 									if (!options.ignoreErrored) {
     /******/ 										reportError(err2);
     /******/ 										reportError(err);
                     /******/
-}
+                  }
                   /******/
-}
+                }
                 /******/
-} else {
+              } else {
     /******/ 								if (options.onErrored) {
     /******/ 									options.onErrored({
     /******/ 										type: "self-accept-errored",
     /******/ 										moduleId: moduleId,
     /******/ 										error: err
-        /******/
-});
+                /******/
+              });
                   /******/
-}
+                }
     /******/ 								if (!options.ignoreErrored) {
     /******/ 									reportError(err);
                   /******/
-}
+                }
                 /******/
-}
+              }
               /******/
-}
+            }
             /******/
-}
+          }
     /******/
     /******/ 					return outdatedModules;
           /******/
-}
+        }
         /******/
-};
+      };
       /******/
-}
+    }
     /******/ 		__webpack_require__.hmrI.jsonp = function (moduleId, applyHandlers) {
     /******/ 			if (!currentUpdate) {
     /******/ 				currentUpdate = {};
@@ -2528,13 +2581,13 @@
     /******/ 				currentUpdateRemovedChunks = [];
     /******/ 				applyHandlers.push(applyHandler);
         /******/
-}
+      }
     /******/ 			if (!__webpack_require__.o(currentUpdate, moduleId)) {
     /******/ 				currentUpdate[moduleId] = __webpack_require__.m[moduleId];
         /******/
-}
+      }
       /******/
-};
+    };
     /******/ 		__webpack_require__.hmrC.jsonp = function (
     /******/ 			chunkIds,
     /******/ 			removedChunks,
@@ -2549,8 +2602,8 @@
     /******/ 			currentUpdate = removedModules.reduce(function (obj, key) {
     /******/ 				obj[key] = false;
     /******/ 				return obj;
-        /******/
-}, {});
+      /******/
+    }, {});
     /******/ 			currentUpdateRuntime = [];
     /******/ 			chunkIds.forEach(function (chunkId) {
     /******/ 				if (
@@ -2559,10 +2612,10 @@
     /******/) {
     /******/ 					promises.push(loadUpdateChunk(chunkId, updatedModulesList));
     /******/ 					currentUpdateChunks[chunkId] = true;
-          /******/
-}
         /******/
-});
+      }
+      /******/
+    });
     /******/ 			if (__webpack_require__.f) {
     /******/ 				__webpack_require__.f.jsonpHmr = function (chunkId, promises) {
     /******/ 					if (
@@ -2574,13 +2627,13 @@
     /******/ 						promises.push(loadUpdateChunk(chunkId));
     /******/ 						currentUpdateChunks[chunkId] = true;
             /******/
-}
+          }
           /******/
-};
+        };
         /******/
-}
+      }
       /******/
-};
+    };
     /******/
     /******/ 		__webpack_require__.hmrM = () => {
     /******/ 			if (typeof fetch === "undefined") throw new Error("No browser support: need fetch API");
@@ -2588,10 +2641,10 @@
     /******/ 				if (response.status === 404) return; // no update available
     /******/ 				if (!response.ok) throw new Error("Failed to fetch update manifest " + response.statusText);
     /******/ 				return response.json();
-        /******/
-});
       /******/
-};
+    });
+      /******/
+    };
     /******/
     /******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
     /******/
@@ -2605,9 +2658,9 @@
     /******/ 				if (__webpack_require__.o(moreModules, moduleId)) {
     /******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
           /******/
-}
+        }
         /******/
-}
+      }
     /******/ 			if (runtime) runtime(__webpack_require__);
     /******/ 			if (parentChunkLoadingFunction) parentChunkLoadingFunction(data);
     /******/ 			for (; i < chunkIds.length; i++) {
@@ -2615,19 +2668,19 @@
     /******/ 				if (__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
     /******/ 					installedChunks[chunkId][0]();
           /******/
-}
+        }
     /******/ 				installedChunks[chunkIds[i]] = 0;
         /******/
-}
+      }
     /******/ 			__webpack_require__.O();
       /******/
-}
+    }
     /******/
     /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
     /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
     /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
     /******/
-})();
+  })();
     /******/
     /************************************************************************/
     /******/
