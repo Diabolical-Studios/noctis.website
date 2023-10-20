@@ -6,9 +6,10 @@
 
 
 .calendar {
-  margin: 0 auto;
   padding: 40px;
-  background-color: var(--dark-blue);
+  height: -webkit-fill-available;
+
+  z-index: 6;
 }
 
 .gantt {
@@ -24,7 +25,9 @@
   outline-width: 1px;
   outline-color: #4b66e9;
 
-  background-color: #0d1748;
+  background-color: #041237c4;
+
+  height: 100%;
 }
 
 @media (max-width: 1400px) {
@@ -98,7 +101,6 @@
   font-size: 24px;
   font-family: 'NauSea';
   letter-spacing: 2px;
-  font-weight: bold;
   text-align: center;
   align-items: center;
   display: flex;
@@ -170,10 +172,21 @@
 
 
 
+.slide {
+  overflow: hidden !important;
+}
 
 
+.page-2 {
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
 
+  display: flex;
+  flex-direction: column;
 
+  background: linear-gradient(to bottom, #000000, var(--dark-blue));
+}
 
 
 
@@ -202,13 +215,13 @@
 
 .title_area {
   position: relative;
-  padding: 0 40px;
+  padding: 20px 40px;
   transform-origin: bottom left;
   margin: -1px;
-  z-index: 4;
+  z-index: 5;
   color: #fff;
   white-space: nowrap;
-  font-size: clamp(1rem, 5vw, 3rem);
+  font-size: clamp(1rem, 8vw, 5rem);
   width: 100vw;
 }
 
@@ -216,11 +229,12 @@
   align-items: center;
   position: relative;
   display: flex;
-  height: fit-content;
+  height: -webkit-fill-available;
   color: #fff;
   overflow-y: hidden;
   overflow-x: auto;
-  background: linear-gradient(to bottom, #000000, var(--dark-blue));
+
+  z-index: 6;
 }
 
 
@@ -292,17 +306,18 @@
   display: flex;
   padding: 40px;
   justify-content: space-between;
-  min-width: 25vw;
+  min-width: 40vw;
   gap: 20px;
-  max-width: 30vw;
   flex-direction: column;
+
+  height: -webkit-fill-available;
 }
 
 .log_date {
   display: flex;
   justify-content: space-between;
   width: -webkit-fill-available;
-  background-color: #0d1748;
+  background-color: #041237c4;
   outline: solid;
   outline-width: 1px;
   outline-color: #4b66e9;
@@ -317,12 +332,14 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background-color: #0d1748;
+  background-color: #041237c4;
   outline: solid;
   outline-width: 1px;
   outline-color: #4b66e9;
   padding: 20px;
   border-radius: 8px;
+
+  height: -webkit-fill-available;
 }
 
 .log_content img {
@@ -331,6 +348,7 @@
   height: 100%;
 
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .log_topic {
@@ -346,7 +364,6 @@
   border-width: 6px;
   border-color: #4b66e9;
   rotate: 90deg;
-  height: -webkit-fill-available;
   min-height: 50px;
   top: 50%;
   position: sticky;
@@ -606,7 +623,7 @@ body.no-scroll {
 }
 
 section::-webkit-scrollbar,
-body::-webkit-scrollbar {
+body::-webkit-scrollbar, .gantt::-webkit-scrollbar {
   width: 10px;
   /* Width of the vertical scrollbar */
   height: 10px;
@@ -614,17 +631,17 @@ body::-webkit-scrollbar {
 }
 
 section::-webkit-scrollbar-track,
-body::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track,.gantt::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 section::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb, .gantt::-webkit-scrollbar-thumb {
   background-color: rgba(97, 97, 97, 0.8);
 }
 
 section::-webkit-scrollbar-thumb:hover,
-body::-webkit-scrollbar-thumb:hover {
+body::-webkit-scrollbar-thumb:hover, .gantt::-webkit-scrollbar-thumb:hover {
   background-color: #616161;
 }
 

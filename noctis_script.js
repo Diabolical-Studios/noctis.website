@@ -230,61 +230,6 @@
         function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
-
-        // Function to get the number of days in a month
-        function daysInMonth(month, year) {
-          return new Date(year, month, 0).getDate();
-        }
-
-        // Get the current date
-        const currentDate = new Date();
-        const currentDay = currentDate.getDate();
-        const currentMonth = currentDate.getMonth(); // Months are 0-indexed (0 = January, 11 = December)
-        const currentYear = currentDate.getFullYear();
-
-        const progressBars = document.querySelectorAll('.gantt__row-bars li');
-
-        progressBars.forEach(bar => {
-          const gridColumn = window.getComputedStyle(bar, null).getPropertyValue("grid-column");
-          const [startMonth, endMonth] = gridColumn.split('/').map(value => parseInt(value.trim()) - 1); // Subtracting 1 to make it 0-indexed
-
-          // Calculate the total days between the start and end months
-          let totalDays = 0;
-          for (let i = startMonth; i <= endMonth; i++) {
-            totalDays += daysInMonth(i + 1, currentYear);
-          }
-
-          // Calculate the days passed since the start month
-          let daysPassed = 0;
-          for (let i = startMonth; i < currentMonth; i++) {
-            daysPassed += daysInMonth(i + 1, currentYear);
-          }
-          if (currentMonth >= startMonth && currentMonth <= endMonth) {
-            daysPassed += currentDay;
-          }
-
-          // Calculate the percentage of days passed within the total days
-          let percentage = (daysPassed / totalDays) * 100;
-
-          // Ensure the percentage does not exceed 100% or fall below 0%
-          if (currentMonth > endMonth) {
-            percentage = 100;
-          } else if (currentMonth < startMonth) {
-            percentage = 0;
-          }
-
-          // Apply the percentage to the progress bar inside the current li
-          const progressBar = bar.querySelector('.progress-bar');
-          progressBar.style.width = `${percentage}%`;
-
-          // Update the value inside the <p> tag inside the current li
-          const progressValue = bar.querySelector('.progress-value');
-          progressValue.textContent = `${percentage.toFixed(0)}%`;
-        });
-
-
-
-
         // Init Timer
 
         initQuiz();

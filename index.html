@@ -8,7 +8,7 @@
     <title>Noctis</title>
     <link rel="icon" href="favicon.png">
     <script defer="defer" src="noctis_script_2.js"></script>
-    <script defer="defer" src="noctis_script.js"></script>
+    <!-- <script defer="defer" src="noctis_script.js"></script> -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +21,9 @@
             window.location.href = "/.netlify/functions/patreon-auth";
         }
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -35,20 +38,46 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function () {
+            let slideIndex = 0;
+
+            $(window).on('wheel', function (event) {
+                // Determine the scroll direction
+                if (event.originalEvent.deltaY > 0 && slideIndex < $('.slide').length - 1) {
+                    // Scrolling down
+                    slideIndex++;
+                } else if (event.originalEvent.deltaY < 0 && slideIndex > 0) {
+                    // Scrolling up
+                    slideIndex--;
+                }
+
+                // Scroll to the next/previous slide instantly
+                $('html, body').stop().animate({
+                    scrollTop: $('.slide').eq(slideIndex).offset().top
+                }, 800); // 200ms for a quick but smooth transition
+
+                // Prevent default scroll behavior
+                return false;
+            });
+        });
+    </script>
+
+
     <script src="./client.js"></script>
 
 </head>
 
 <body class="no-scrollz">
 
-    <div class="preloader" id="preloader">
+    <!-- <div class="preloader" id="preloader">
         <div class="wrapper">
             <p class="squiggly" style="font-family: 'NauSea'; letter-spacing: 4px;">Ready?</p>
             <div class="loader">
                 <div class="line" id="loaderLine"></div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <!-- Header End-->
@@ -85,7 +114,7 @@
             </div>
         </header>
 
-        <div class="intro__background">
+        <div class="intro__background slide" id="slide1">
 
             <div style="
             width: 100%;
@@ -243,205 +272,394 @@
     </section> -->
     <!-- WhatIs End -->
 
-    <div class="title_area" style="background-color: #000;">
-        <h2 style="font-family: 'NauSea'; letter-spacing: 2px; font-weight: 100;">CHANGELOG</h2>
+    <div class="page-2 slide" id="slide2">
+
+        <div style="
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        z-index: 3;
+        mix-blend-mode: darken;
+        "></div>
+
+        <img src="../assets/gifs/JellyMod.gif" style="position: absolute; width: 100%; height: 100vh;" alt="" class="intro-star">
+
+        <div class="title_area">
+            <h2 style="font-family: 'NauSea'; letter-spacing: 2px; font-weight: 100; text-align: center;">CHANGELOG</h2>
+        </div>
+
+        <section class="changelog">
+
+
+            <div class="single_log">
+                <div class="log_date">
+                    <div>
+                        DEC 21
+                    </div>
+                    <div>
+                        2023
+                    </div>
+                </div>
+
+                <div class="log_content">
+                    <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                    <div class="log_topic">
+                        NEWS</div>
+                    <h2>Hello Noctis Fans!</h2>
+                    <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the
+                        top
+                        (0%), remains transparent until the halfway point (50%), then transitions immediately to black
+                        at
+                        the halfway point (50%), and remains black until the bottom (100%).</p>
+                    <img src="../assets/images/backgroundLandingPage.png" alt="">
+                </div>
+            </div>
+
+            <div class="log_divider"></div>
+
+
+
+            <div class="single_log">
+                <div class="log_date">
+                    <div>
+                        DEC 21
+                    </div>
+                    <div>
+                        2023
+                    </div>
+                </div>
+
+                <div class="log_content">
+                    <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                    <div class="log_topic">
+                        NEWS</div>
+                    <h2>Hello Noctis Fans!</h2>
+                    <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the
+                        top
+                        (0%), remains transparent until the halfway point (50%), then transitions immediately to black
+                        at
+                        the halfway point (50%), and remains black until the bottom (100%).</p>
+                </div>
+            </div>
+
+            <div class="log_divider"></div>
+
+            <div class="single_log">
+                <div class="log_date">
+                    <div>
+                        DEC 21
+                    </div>
+                    <div>
+                        2023
+                    </div>
+                </div>
+
+                <div class="log_content">
+                    <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                    <div class="log_topic">
+                        NEWS</div>
+                    <h2>Hello Noctis Fans!</h2>
+                    <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the
+                        top
+                        (0%), remains transparent until the halfway point (50%), then transitions immediately to black
+                        at
+                        the halfway point (50%), and remains black until the bottom (100%).</p>
+                    <img src="../assets/images/backgroundLandingPage.png" alt="">
+                </div>
+            </div>
+
+            <div class="log_divider"></div>
+
+
+            <div class="single_log">
+                <div class="log_date">
+                    <div>
+                        DEC 21
+                    </div>
+                    <div>
+                        2023
+                    </div>
+                </div>
+
+                <div class="log_content">
+                    <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                    <div class="log_topic">
+                        NEWS</div>
+                    <h2>Hello Noctis Fans!</h2>
+                    <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the
+                        top
+                        (0%), remains transparent until the halfway point (50%), then transitions immediately to black
+                        at
+                        the halfway point (50%), and remains black until the bottom (100%).</p>
+                    <img src="../assets/images/backgroundLandingPage.png" alt="">
+                </div>
+            </div>
+
+            <div class="log_divider"></div>
+
+
+            <div class="single_log">
+                <div class="log_date">
+                    <div>
+                        DEC 21
+                    </div>
+                    <div>
+                        2023
+                    </div>
+                </div>
+
+                <div class="log_content">
+                    <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                    <div class="log_topic">
+                        NEWS</div>
+                    <h2>Hello Noctis Fans!</h2>
+                    <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the
+                        top
+                        (0%), remains transparent until the halfway point (50%), then transitions immediately to black
+                        at
+                        the halfway point (50%), and remains black until the bottom (100%).</p>
+                    <img src="../assets/images/backgroundLandingPage.png" alt="">
+                </div>
+            </div>
+
+            <div class="log_divider"></div>
+
+
+            <div class="single_log">
+                <div class="log_date">
+                    <div>
+                        DEC 21
+                    </div>
+                    <div>
+                        2023
+                    </div>
+                </div>
+
+                <div class="log_content">
+                    <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                    <div class="log_topic">
+                        NEWS</div>
+                    <h2>Hello Noctis Fans!</h2>
+                    <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the
+                        top
+                        (0%), remains transparent until the halfway point (50%), then transitions immediately to black
+                        at
+                        the halfway point (50%), and remains black until the bottom (100%).</p>
+                    <img src="../assets/images/backgroundLandingPage.png" alt="">
+                </div>
+            </div>
+
+            <div class="log_divider"></div>
+
+
+            <div class="single_log">
+                <div class="log_date">
+                    <div>
+                        DEC 21
+                    </div>
+                    <div>
+                        2023
+                    </div>
+                </div>
+
+                <div class="log_content">
+                    <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                    <div class="log_topic">
+                        NEWS</div>
+                    <h2>Hello Noctis Fans!</h2>
+                    <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the
+                        top
+                        (0%), remains transparent until the halfway point (50%), then transitions immediately to black
+                        at
+                        the halfway point (50%), and remains black until the bottom (100%).</p>
+                    <img src="../assets/images/backgroundLandingPage.png" alt="">
+                </div>
+            </div>
+
+        </section>
     </div>
 
-    <section class="changelog">
+    <div class="page-2 slide" id="slide3">
 
+        <div style="
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        z-index: 3;
+        mix-blend-mode: darken;
+        "></div>
 
-        <div class="single_log">
-            <div class="log_date">
-                <div>
-                    DEC 21
-                </div>
-                <div>
-                    2023
-                </div>
-            </div>
+        <img src="../assets/gifs/JellyMod.gif" style="position: absolute; width: 100%; height: 100vh;" alt="" class="intro-star">
 
-            <div class="log_content">
-                <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
-                <div class="log_topic">
-                    NEWS</div>
-                <h2>Hello Noctis Fans!</h2>
-                <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the top
-                    (0%), remains transparent until the halfway point (50%), then transitions immediately to black at
-                    the halfway point (50%), and remains black until the bottom (100%).</p>
-                <img src="../assets/images/backgroundLandingPage.png" alt="">
-            </div>
+        <div class="title_area">
+            <h2 style="font-family: 'NauSea'; letter-spacing: 2px; font-weight: 100; text-align: center;">ROADMAP</h2>
         </div>
 
-        <div class="log_divider"></div>
-
-
-
-        <div class="single_log">
-            <div class="log_date">
-                <div>
-                    DEC 21
+        <div class="calendar">
+            <div class="gantt">
+                <div class="gantt__row gantt__row--months">
+                    <div class="gantt__row-first">2023</div>
+                    <span>Jan</span><span>Feb</span><span>Mar</span>
+                    <span>Apr</span><span>May</span><span>Jun</span>
+                    <span>Jul</span><span>Aug</span><span>Sep</span>
+                    <span>Oct</span><span>Nov</span><span>Dec</span>
                 </div>
-                <div>
-                    2023
+                <div class="gantt__row gantt__row--lines" data-month="5">
+                    <span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
                 </div>
+
+
+                <div class="gantt__row">
+                    <div class="gantt__row-first">
+                    </div>
+                    <ul class="gantt__row-bars">
+                        <li style="grid-column: 6/12;">
+                            <div class="progress-bar">
+                                <h3 style="padding: 10px;">
+                                    Title
+                                </h3>
+                                <p class="progress-value" style="padding: 10px;">
+                                    23%
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="gantt__row">
+                    <div class="gantt__row-first">
+                    </div>
+                    <ul class="gantt__row-bars">
+                        <li style="grid-column: 4/8;">
+                            <div class="progress-bar">
+                                <h3 style="padding: 10px;">
+                                    Title
+                                </h3>
+                                <p class="progress-value" style="padding: 10px;">
+                                    23%
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="gantt__row">
+                    <div class="gantt__row-first">
+                    </div>
+                    <ul class="gantt__row-bars">
+                        <li style="grid-column: 9/11;">
+                            <div class="progress-bar">
+                                <h3 style="padding: 10px;">
+                                    Title
+                                </h3>
+                                <p class="progress-value" style="padding: 10px;">
+                                    23%
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="gantt__row">
+                    <div class="gantt__row-first">
+                    </div>
+                    <ul class="gantt__row-bars">
+                        <li style="grid-column: 7/10;">
+                            <div class="progress-bar">
+                                <h3 style="padding: 10px;">
+                                    Title
+                                </h3>
+                                <p class="progress-value" style="padding: 10px;">
+                                    23%
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="gantt__row">
+                    <div class="gantt__row-first">
+                    </div>
+                    <ul class="gantt__row-bars">
+                        <li style="grid-column: 1/13;">
+                            <div class="progress-bar">
+                                <h3 style="padding: 10px;">
+                                    Title
+                                </h3>
+                                <p class="progress-value" style="padding: 10px;">
+                                    23%
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="gantt__row">
+                    <div class="gantt__row-first">
+                    </div>
+                    <ul class="gantt__row-bars">
+                        <li style="grid-column: 3/5;">
+                            <div class="progress-bar">
+                                <h3 style="padding: 10px;">
+                                    Title
+                                </h3>
+                                <p class="progress-value" style="padding: 10px;">
+                                    23%
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="gantt__row">
+                    <div class="gantt__row-first">
+                    </div>
+                    <ul class="gantt__row-bars">
+                        <li style="grid-column: 1/9;">
+                            <div class="progress-bar">
+                                <h3 style="padding: 10px;">
+                                    Title
+                                </h3>
+                                <p class="progress-value" style="padding: 10px;">
+                                    23%
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="gantt__row">
+                    <div class="gantt__row-first">
+                    </div>
+                    <ul class="gantt__row-bars">
+                        <li style="grid-column: 3/6;">
+                            <div class="progress-bar">
+                                <h3 style="padding: 10px;">
+                                    Title
+                                </h3>
+                                <p class="progress-value" style="padding: 10px;">
+                                    23%
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
 
-            <div class="log_content">
-                <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
-                <div class="log_topic">
-                    NEWS</div>
-                <h2>Hello Noctis Fans!</h2>
-                <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the top
-                    (0%), remains transparent until the halfway point (50%), then transitions immediately to black at
-                    the halfway point (50%), and remains black until the bottom (100%).</p>
-                <img src="../assets/images/backgroundLandingPage.png" alt="">
-            </div>
         </div>
-
-        <div class="log_divider"></div>
-
-        <div class="single_log">
-            <div class="log_date">
-                <div>
-                    DEC 21
-                </div>
-                <div>
-                    2023
-                </div>
-            </div>
-
-            <div class="log_content">
-                <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
-                <div class="log_topic">
-                    NEWS</div>
-                <h2>Hello Noctis Fans!</h2>
-                <p>The color stops are set at 0%, 50%, 50%, and 100%. The gradient starts with transparent at the top
-                    (0%), remains transparent until the halfway point (50%), then transitions immediately to black at
-                    the halfway point (50%), and remains black until the bottom (100%).</p>
-                <img src="../assets/images/backgroundLandingPage.png" alt="">
-            </div>
-        </div>
-
-    </section>
-
-    <div class="title_area" style="background-color: var(--dark-blue);
-    ">
-        <h2 style="font-family: 'NauSea'; letter-spacing: 2px; font-weight: 100;">ROADMAP</h2>
     </div>
 
 
-
-
-
-    <div class="calendar">
-        <div class="gantt">
-            <div class="gantt__row gantt__row--months">
-                <div class="gantt__row-first">2023</div>
-                <span>Jan</span><span>Feb</span><span>Mar</span>
-                <span>Apr</span><span>May</span><span>Jun</span>
-                <span>Jul</span><span>Aug</span><span>Sep</span>
-                <span>Oct</span><span>Nov</span><span>Dec</span>
-            </div>
-            <div class="gantt__row gantt__row--lines" data-month="5">
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-            </div>
-
-
-            <div class="gantt__row">
-                <div class="gantt__row-first">
-                </div>
-                <ul class="gantt__row-bars">
-                    <li style="grid-column: 6/12;">
-                        <div class="progress-bar">
-                            <h3 style="padding: 10px;">
-                                Title
-                            </h3>
-                            <p class="progress-value" style="padding: 10px;">
-                                23%
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-
-            <div class="gantt__row">
-                <div class="gantt__row-first">
-                </div>
-                <ul class="gantt__row-bars">
-                    <li style="grid-column: 4/8;">
-                        <div class="progress-bar">
-                            <h3 style="padding: 10px;">
-                                Title
-                            </h3>
-                            <p class="progress-value" style="padding: 10px;">
-                                23%
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-
-            <div class="gantt__row">
-                <div class="gantt__row-first">
-                </div>
-                <ul class="gantt__row-bars">
-                    <li style="grid-column: 9/11;">
-                        <div class="progress-bar">
-                            <h3 style="padding: 10px;">
-                                Title
-                            </h3>
-                            <p class="progress-value" style="padding: 10px;">
-                                23%
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-
-            <div class="gantt__row">
-                <div class="gantt__row-first">
-                </div>
-                <ul class="gantt__row-bars">
-                    <li style="grid-column: 1/2;">
-                        <div class="progress-bar">
-                            <h3 style="padding: 10px;">
-                                Title
-                            </h3>
-                            <p class="progress-value" style="padding: 10px;">
-                                23%
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-
-            <div class="gantt__row">
-                <div class="gantt__row-first">
-                </div>
-                <ul class="gantt__row-bars">
-                    <li style="grid-column: 3/6;">
-                        <div class="progress-bar">
-                            <h3 style="padding: 10px;">
-                                Title
-                            </h3>
-                            <p class="progress-value" style="padding: 10px;">
-                                23%
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-
-    </div>
 
 
 
