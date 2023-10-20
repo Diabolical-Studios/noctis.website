@@ -1,4 +1,3 @@
-// When the page loads
 document.addEventListener('DOMContentLoaded', () => {
     const isPatron = getIsPatronFromCookie();
     console.log("Is Patron:", isPatron);
@@ -17,33 +16,31 @@ function getIsPatronFromCookie() {
     }
 };
 
-
 async function checkSubscriptionStatusAndUpdateButton(isPatron) {
     const btn = document.querySelector('.header__btn');
     const btnWrapper = btn.querySelector('.header__btn-wrapper');
     const btnText = btnWrapper.querySelector('.header__btn-text');
     const svg = btnWrapper.querySelector('svg');
+    const patronSection = document.getElementById('patronSection'); // Select the section by its id
 
     if (isPatron) {
+        patronSection.style.display = 'block'; // Show the section if user is a patron
         btn.onclick = startDownload;
         btnText.textContent = 'Download';
         if (svg) svg.remove();
     }
     else {
+        patronSection.style.display = 'none'; // Hide the section if user is not a patron
         btn.onclick = visitPatreon;
         btnText.textContent = 'Become A Supporter';
     }
-    // If the user is a subscriber, the button remains unchanged
 }
 
-
 function visitPatreon() {
-    // Your download logic here...
     window.open("https://www.patreon.com/noctisgame");
 }
 
 function startDownload() {
-    // Your download logic here...
     window.location.href = "URL_TO_YOUR_DOWNLOADABLE_RESOURCE";
 }
 
@@ -55,4 +52,3 @@ function getAccessToken() {
         return null;
     }
 }
-
