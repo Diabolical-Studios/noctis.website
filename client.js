@@ -21,18 +21,18 @@ async function checkSubscriptionStatusAndUpdateButton(isPatron) {
     const btnWrapper = btn.querySelector('.header__btn-wrapper');
     const btnText = btnWrapper.querySelector('.header__btn-text');
     const svg = btnWrapper.querySelector('svg');
-    const patronSection = document.getElementById('patronSection'); // Select the section by its id
+    const patronSection = document.getElementById('slide2'); // Select the section by its id
 
     if (isPatron) {
-        patronSection.style.display = 'block'; // Show the section if user is a patron
         btn.onclick = startDownload;
         btnText.textContent = 'Download';
         if (svg) svg.remove();
+        patronSection.style.display = 'block'; // Show the section if user is a patron
     }
     else {
-        patronSection.style.display = 'none'; // Hide the section if user is not a patron
         btn.onclick = visitPatreon;
         btnText.textContent = 'Become A Supporter';
+        patronSection.style.display = 'none'; // Hide the section if user is not a patron
     }
 }
 
