@@ -6,10 +6,7 @@
 
         "use strict";
 
-        // EXTERNAL MODULE: ./javascript/SmoothScroll.js
-        var SmoothScroll = __webpack_require__(2362);
-        var SmoothScroll_default = /*#__PURE__*/__webpack_require__.n(SmoothScroll);
-        ;// CONCATENATED MODULE: ./javascript/quiz.js
+        // CONCATENATED MODULE: ./javascript/quiz.js
         function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() { }; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
         function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -303,26 +300,6 @@
           XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Finally, send our data.
 
           XHR.send(urlEncodedData);
-        } // Parallax
-
-
-        var introBg = document.querySelector(".intro__background img"); // const rocks = document.querySelector(".hero__rocks");
-
-        var rabbits = document.querySelector(".hero__rabbits");
-        var path = document.querySelector(".hero__path");
-        var whatis = document.querySelector(".whatis");
-        window.addEventListener("load", parallax);
-        window.addEventListener("scroll", parallax);
-
-        function parallax(event) {
-          var backgroundValue = Math.min(400, pageYOffset * 0.35);
-          var rocksValue = Math.max(-50, pageYOffset * -0.15);
-          var rabbitsValue = Math.max(-650, pageYOffset * -0.75);
-          introBg.style.transform = "translateY(".concat(backgroundValue, "px)"); // rocks.style.transform = `translateY(${rocksValue}px)`;
-
-          rabbits.style.transform = "translateY(".concat(rabbitsValue, "px) translateX(-50%)");
-          path.style.transform = "translateY(".concat(rabbitsValue, "px)");
-          whatis.style.marginTop = "".concat(rabbitsValue - 1, "px");
         } // Preloader
 
 

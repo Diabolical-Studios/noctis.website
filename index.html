@@ -8,7 +8,7 @@
     <title>Noctis</title>
     <link rel="icon" href="favicon.png">
     <script defer="defer" src="noctis_script_2.js"></script>
-    <!-- <script defer="defer" src="noctis_script.js"></script> -->
+    <script defer="defer" src="noctis_script.js"></script>
     <link href="css/style.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -272,7 +272,170 @@
     </section> -->
     <!-- WhatIs End -->
 
-    <div class="page-2 slide" id="slide2">
+    <div class="page-2 slide" id="slide2" id="patronSection" style="display: none;">
+        <div style="
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        z-index: 3;
+        mix-blend-mode: darken;
+        "></div>
+
+        <img src="../assets/gifs/JellyMod.gif" style="position: absolute; width: 100%; height: 100vh;" alt=""
+            class="intro-star">
+
+        <div class="title_area">
+            <h2 style="font-family: 'NauSea'; letter-spacing: 2px; font-weight: 100; text-align: center;">THANK YOU FOR
+                YOUR SUPPORT</h2>
+        </div>
+
+        <section
+            style="display: flex;  justify-content: center; align-items: center; height: 100%; gap: 40px; padding: 40px;">
+            <div class="download_container"
+                style="height: 100%; display: flex; flex-direction: column; gap: 20px; color: #fff; z-index: 5;">
+                <div class="log_date">
+                    <div>
+                        WINDOWS
+                    </div>
+                    <div>LATEST VERSION</div>
+                </div>
+
+                <div class="download_content">
+                    <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="log_topic">
+                            Release Notes</div>
+                        <h2>[ GAMEPLAY ]</h2>
+                        <ul class="b">
+                            <li>Command aliases now leverage subtick accuracy</li>
+                        </ul>
+
+                        <h2>[ SOUND ]</h2>
+                        <ul class="b">
+                            <li>New sound for final 10 seconds of bomb beeping</li>
+                            <li>Added missing KSK agent voice</li>
+                            <li>Reduced falloff distance of knife impact and swish sounds</li>
+                            <li>Various tweaks and bug fixes around occlusion filters and footstep clarity</li>
+                        </ul>
+
+                        <h2>[ MISC ]</h2>
+                        <ul class="b">
+                            <li>Fixed missing gamestate integration data regarding flashbangs and damage stats</li>
+                            <li>Fixed a bug where a defused bomb would block the player from swapping to a gun dropped
+                                close by
+                            </li>
+                            <li> Fixed some cases where players could peek through ceilings
+                            </li>
+                            <li> Convar cl_draw_only_deathnotices now blocks match status alerts such as LAST ROUND OF
+                                FIRST HALF.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="" class="btn nf__btn" target="_blank">
+                        <span class="btn__text">DOWNLOAD</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="download_container"
+                style="height: 100%; display: flex; flex-direction: column; gap: 20px; color: #fff; z-index: 5;">
+                <div class="log_date">
+                    <div>
+                        WINDOWS
+                    </div>
+                    <div>BETA VERSION</div>
+                </div>
+
+                <div class="download_content">
+                    <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="log_topic">
+                            Release Notes</div>
+                        <h2>[ GAMEPLAY ]</h2>
+                        <ul class="b">
+                            <li>Command aliases now leverage subtick accuracy</li>
+                        </ul>
+
+                        <h2>[ SOUND ]</h2>
+                        <ul class="b">
+                            <li>New sound for final 10 seconds of bomb beeping</li>
+                            <li>Added missing KSK agent voice</li>
+                            <li>Reduced falloff distance of knife impact and swish sounds</li>
+                            <li>Various tweaks and bug fixes around occlusion filters and footstep clarity</li>
+                        </ul>
+
+                        <h2>[ MISC ]</h2>
+                        <ul class="b">
+                            <li>Fixed missing gamestate integration data regarding flashbangs and damage stats</li>
+                            <li>Fixed a bug where a defused bomb would block the player from swapping to a gun dropped
+                                close by
+                            </li>
+                            <li> Fixed some cases where players could peek through ceilings
+                            </li>
+                            <li> Convar cl_draw_only_deathnotices now blocks match status alerts such as LAST ROUND OF
+                                FIRST HALF.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="" class="btn nf__btn" target="_blank">
+                        <span class="btn__text">DOWNLOAD</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="download_container"
+                style="height: 100%; display: flex; flex-direction: column; gap: 20px; color: #fff; z-index: 5;">
+                <div class="log_date" style="background-color: #de000018; outline-color: #ff000080;">
+                    <div>
+                        WINDOWS
+                    </div>
+                    <div style="color: #ff0000;">DEVELOPMENT BRANCH</div>
+                </div>
+
+                <div class="download_content" style="background-color: #de000018; outline-color: #ff000080;">
+                    <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="log_topic">
+                            Release Notes</div>
+                        <h2>[ GAMEPLAY ]</h2>
+                        <ul class="b">
+                            <li>Command aliases now leverage subtick accuracy</li>
+                        </ul>
+
+                        <h2>[ SOUND ]</h2>
+                        <ul class="b">
+                            <li>New sound for final 10 seconds of bomb beeping</li>
+                            <li>Added missing KSK agent voice</li>
+                            <li>Reduced falloff distance of knife impact and swish sounds</li>
+                            <li>Various tweaks and bug fixes around occlusion filters and footstep clarity</li>
+                        </ul>
+
+                        <h2>[ MISC ]</h2>
+                        <ul class="b">
+                            <li>Fixed missing gamestate integration data regarding flashbangs and damage stats</li>
+                            <li>Fixed a bug where a defused bomb would block the player from swapping to a gun dropped
+                                close by
+                            </li>
+                            <li> Fixed some cases where players could peek through ceilings
+                            </li>
+                            <li> Convar cl_draw_only_deathnotices now blocks match status alerts such as LAST ROUND OF
+                                FIRST HALF.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="" class="btn nf__btn" target="_blank" style="background-color: #de000018; border-color: #ff000080; box-shadow: 5px 8px 0px #ff000080;">
+                        <span class="btn__text">DOWNLOAD</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="page-2 slide" id="slide3">
 
         <div style="
         width: 100%;
@@ -283,7 +446,8 @@
         mix-blend-mode: darken;
         "></div>
 
-        <img src="../assets/gifs/JellyMod.gif" style="position: absolute; width: 100%; height: 100vh;" alt="" class="intro-star">
+        <img src="../assets/gifs/JellyMod.gif" style="position: absolute; width: 100%; height: 100vh;" alt=""
+            class="intro-star">
 
         <div class="title_area">
             <h2 style="font-family: 'NauSea'; letter-spacing: 2px; font-weight: 100; text-align: center;">CHANGELOG</h2>
@@ -480,7 +644,7 @@
         </section>
     </div>
 
-    <div class="page-2 slide" id="slide3">
+    <div class="page-2 slide" id="slide4">
 
         <div style="
         width: 100%;
@@ -491,7 +655,8 @@
         mix-blend-mode: darken;
         "></div>
 
-        <img src="../assets/gifs/JellyMod.gif" style="position: absolute; width: 100%; height: 100vh;" alt="" class="intro-star">
+        <img src="../assets/gifs/JellyMod.gif" style="position: absolute; width: 100%; height: 100vh;" alt=""
+            class="intro-star">
 
         <div class="title_area">
             <h2 style="font-family: 'NauSea'; letter-spacing: 2px; font-weight: 100; text-align: center;">ROADMAP</h2>
@@ -532,22 +697,6 @@
                 </div>
 
 
-                <div class="gantt__row">
-                    <div class="gantt__row-first">
-                    </div>
-                    <ul class="gantt__row-bars">
-                        <li style="grid-column: 4/8;">
-                            <div class="progress-bar">
-                                <h3 style="padding: 10px;">
-                                    Title
-                                </h3>
-                                <p class="progress-value" style="padding: 10px;">
-                                    23%
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
 
 
                 <div class="gantt__row">
@@ -585,22 +734,6 @@
                     </ul>
                 </div>
 
-                <div class="gantt__row">
-                    <div class="gantt__row-first">
-                    </div>
-                    <ul class="gantt__row-bars">
-                        <li style="grid-column: 1/13;">
-                            <div class="progress-bar">
-                                <h3 style="padding: 10px;">
-                                    Title
-                                </h3>
-                                <p class="progress-value" style="padding: 10px;">
-                                    23%
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
 
                 <div class="gantt__row">
                     <div class="gantt__row-first">
@@ -913,7 +1046,7 @@
                     alongside unclear speeches from the loudspeakers of the robots.
                 </p>
                 <a href="https://discord.gg/tvZhnBzy" target="_blank" class="btn nf__btn">
-                    <span class="btn__text">Read Full Version</span>
+                    <span class="btn__text">DOWNLOAD</span>
                 </a>
             </div>
         </div>
