@@ -16,7 +16,8 @@
   border: 0;
   border-radius: 12px;
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   box-sizing: border-box;
 
   outline: solid;
@@ -25,6 +26,14 @@
 
   background-color: #0d1748;
 }
+
+@media (max-width: 1400px) {
+  .gantt__row {
+    width: 1320px;
+  }
+}
+
+
 .gantt__row {
   display: grid;
   grid-template-columns: 150px 1fr;
@@ -74,9 +83,11 @@
 }
 .gantt__row--months span {
   text-align: center;
-  font-size: 13px;
+  font-family: 'NauSea';
+  letter-spacing: 2px;
+  font-size: 24px;
   align-self: center;
-  font-weight: bold;
+  font-weight: 100;
   padding: 20px 0;
 }
 .gantt__row-first {
@@ -84,9 +95,14 @@
   border-color: #4b66e9;
   border-style: solid;
   padding: 15px 0;
-  font-size: 13px;
+  font-size: 24px;
+  font-family: 'NauSea';
+  letter-spacing: 2px;
   font-weight: bold;
   text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 .gantt__row-bars {
   list-style: none;
@@ -207,6 +223,71 @@
   background: linear-gradient(to bottom, #000000, var(--dark-blue));
 }
 
+
+@media (max-width: 1400px) {
+  .changelog {
+    flex-direction: column;
+  }
+
+  .single_log {
+    max-width: 100% !important;
+  }
+
+  .log_divider {
+    rotate: 0deg !important;
+    top: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .log_content p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Number of lines you want to display */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .log_content {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.2s ease-in-out, transform 0.5s ease-in-out, padding 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+    padding: 0 !important;
+    border: none;
+    margin-top: 0;
+  }
+
+  .log_content.open {
+    max-height: 500px; /* Adjust based on your content's size */
+    opacity: 1;
+    transform: translateY(0);
+    padding: 20px !important;
+    border: solid;
+    border-width: 1px;
+    border-color: #4b66e9;
+    margin-top: 20px;
+  }
+
+  .log_divider {
+    display: none !important;
+  }
+
+  .single_log {
+    padding: 0 40px !important;
+    gap: 0 !important;
+  }
+
+  .changelog {
+    gap: 20px;
+    padding: 20px 0;
+  }
+}
+
+
+
+
 .single_log {
   display: flex;
   padding: 40px;
@@ -270,6 +351,10 @@
   top: 50%;
   position: sticky;
 }
+
+
+
+
 
 h1 {
   animation: glitch 1s linear infinite;
