@@ -22,8 +22,9 @@ ul.b {
 .calendar {
   padding: 40px;
   height: -webkit-fill-available;
-
+  max-width: 1360px;
   z-index: 6;
+  width: -webkit-fill-available;
   overflow-y: hidden;
 }
 
@@ -48,8 +49,6 @@ ul.b {
   outline-color: #4b66e9;
 
   background-color: #041237c4;
-
-  height: 100%;
 }
 
 @media (max-width: 1400px) {
@@ -271,7 +270,7 @@ ul.b {
   z-index: 5;
   color: #fff;
   white-space: nowrap;
-  font-size: clamp(1rem, 8vw, 5rem);
+  font-size: clamp(2rem, 2vw, 5rem);
   width: 100vw;
 }
 

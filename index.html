@@ -41,27 +41,58 @@
     <script>
         $(document).ready(function () {
             let slideIndex = 0;
+            let lastScrollTime = 0;
+            const throttleDelay = 850; // Adjust this to control the sensitivity
+
+            const preventScroll = (e) => {
+                e.preventDefault();
+            };
 
             $(window).on('wheel', function (event) {
+                const currentTime = new Date().getTime();
+
+                if (currentTime - lastScrollTime < throttleDelay) {
+                    // Prevent handling the event if it's too close to the last one
+                    return;
+                }
+
+                lastScrollTime = currentTime;
+
+                let deltaY = event.originalEvent.deltaY;
+
+                // Adjust for touchpads
+                if (event.originalEvent.deltaMode === 1) { // line-based scrolling (like a mouse wheel)
+                    deltaY *= 40; // This is a common scaling factor. You might need to adjust.
+                }
+
                 // Determine the scroll direction
-                if (event.originalEvent.deltaY > 0 && slideIndex < $('.slide').length - 1) {
+                if (deltaY > 0 && slideIndex < $('.slide').length - 1) {
                     // Scrolling down
                     slideIndex++;
-                } else if (event.originalEvent.deltaY < 0 && slideIndex > 0) {
+                } else if (deltaY < 0 && slideIndex > 0) {
                     // Scrolling up
                     slideIndex--;
                 }
 
+                // Block the default scroll behavior for the entire page
+                window.addEventListener('scroll', preventScroll, { passive: false });
+
                 // Scroll to the next/previous slide instantly
                 $('html, body').stop().animate({
                     scrollTop: $('.slide').eq(slideIndex).offset().top
-                }, 800); // 200ms for a quick but smooth transition
+                }, 800, function () {
+                    // Remove the scroll blocking once the animation is done
+                    window.removeEventListener('scroll', preventScroll);
+                });
 
-                // Prevent default scroll behavior
+                // Prevent default scroll behavior for the wheel event
+                event.preventDefault();
                 return false;
             });
         });
     </script>
+
+
 
 
     <script src="./client.js"></script>
@@ -272,7 +303,7 @@
     </section> -->
     <!-- WhatIs End -->
 
-    <div class="page-2 slide" id="slide2" style="display: none;">
+    <div class="page-2 slide" id="slide2" style="align-items: center; display: none;">
         <div style="
         width: 100%;
         position: absolute;
@@ -291,7 +322,7 @@
         </div>
 
         <section
-            style="display: flex;  justify-content: center; align-items: center; height: 100%; gap: 40px; padding: 40px;">
+            style="display: flex;  justify-content: center; align-items: center; height: 100%; gap: 40px; padding: 40px; max-width: 1360px;">
             <div class="download_container"
                 style="height: 100%; display: flex; flex-direction: column; gap: 20px; color: #fff; z-index: 5;">
                 <div class="log_date">
@@ -339,7 +370,7 @@
                 </div>
             </div>
 
-            <div class="download_container"
+            <!-- <div class="download_container"
                 style="height: 100%; display: flex; flex-direction: column; gap: 20px; color: #fff; z-index: 5;">
                 <div class="log_date">
                     <div>
@@ -349,7 +380,6 @@
                 </div>
 
                 <div class="download_content">
-                    <!-- <div style="width: 100%; border-top: solid; border-width: 1px; margin-bottom: 16px;"></div> -->
                     <div style="display: flex; flex-direction: column; gap: 20px;">
                         <div class="log_topic">
                             Release Notes</div>
@@ -384,7 +414,7 @@
                         <span class="btn__text">DOWNLOAD</span>
                     </a>
                 </div>
-            </div>
+            </div> -->
 
             <div class="download_container"
                 style="height: 100%; display: flex; flex-direction: column; gap: 20px; color: #fff; z-index: 5;">
@@ -427,7 +457,8 @@
                         </ul>
                     </div>
 
-                    <a href="" class="btn nf__btn" target="_blank" style="background-color: #de000018; border-color: #ff000080; box-shadow: 5px 8px 0px #ff000080;">
+                    <a href="" class="btn nf__btn" target="_blank"
+                        style="background-color: #de000018; border-color: #ff000080; box-shadow: 5px 8px 0px #ff000080;">
                         <span class="btn__text">DOWNLOAD</span>
                     </a>
                 </div>
@@ -644,7 +675,7 @@
         </section>
     </div>
 
-    <div class="page-2 slide" id="slide4">
+    <div class="page-2 slide" id="slide4" style="align-items: center;">
 
         <div style="
         width: 100%;

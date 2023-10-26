@@ -3,7 +3,7 @@ const queryString = require('querystring');
 
 exports.handler = async function (event, context) {
     const CLIENT_ID = '2ZQbOdViSPl7sGF3HTAY3g4f5WuuuErWN87Jre8evgDaKC6dSdCbBum835gS7H_-';
-    const REDIRECT_URI = 'https://diabolical.services/.netlify/functions/patreon-auth';
+    const REDIRECT_URI = 'https://noctisgame.com/.netlify/functions/patreon-auth';
 
     // If it's the start of the auth
     if (event.httpMethod === "GET" && !event.queryStringParameters.code) {
@@ -48,7 +48,7 @@ exports.handler = async function (event, context) {
             return {
                 statusCode: 302,
                 headers: {
-                    Location: 'https://diabolical.services',
+                    Location: 'https://noctisgame.com',
                     'Set-Cookie': cookieValue
                 }
             };
