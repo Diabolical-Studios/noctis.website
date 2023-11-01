@@ -2,7 +2,8 @@ const axios = require('axios');
 const queryString = require('querystring');
 
 exports.handler = async function (event, context) {
-    const CLIENT_ID = '2ZQbOdViSPl7sGF3HTAY3g4f5WuuuErWN87Jre8evgDaKC6dSdCbBum835gS7H_-';
+    const CLIENT_ID = process.env.PATREON_CLIENT_ID;
+    const CLIENT_SECRET = process.env.PATREON_CLIENT_SECRET;
     const REDIRECT_URI = 'https://noctisgame.com/.netlify/functions/patreon-auth';
 
     // If it's the start of the auth
@@ -18,7 +19,6 @@ exports.handler = async function (event, context) {
 
     // If it's the callback
     if (event.httpMethod === "GET" && event.queryStringParameters.code) {
-        const CLIENT_SECRET = 'buryt7Ox5xCiyaGzxEXL_XKBovayQd-ZvdeRPFfRrQP68TEm4Jnpx47LkmdRsVR1'; 
         const code = event.queryStringParameters.code;
 
         try {
